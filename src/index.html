@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Movies Spa</title>
+    <!-- <link rel="stylesheet" href="index.css" type="text/html"> -->
+</head>
+<body>
+    <div id="app" ></div>
+
+    <!-- todo: delete when found out why styles aren't loaded -->
+<style>
+body {
+    background: black;
+    color: lightgray;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  
+  .logo {
+    color: #F45363;
+    margin: 0 0 20px 0;
+      text-transform: lowercase;
+  }
+  
+  main {
+    height: 90vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+  }
+  
+  .search-panel {
+    flex: 0 1 auto;
+    background-image: url('https://images.unsplash.com/photo-1505489435671-80a165c60816?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=af3fb5171edc0c520c99c8061510f4b8&auto=format&fit=crop&w=831&q=80');
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    margin: 10px 0;
+  }
+  
+  .content-container {
+    flex: 5 1 auto;
+    background: white;
+    color: black;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .content__empty {
+    font-size: 2em;
+  }
+  
+  footer {
+    height: 10vh;
+    display: flex;
+  }
+  
+  .footer-container {
+    flex: 1 1 80%;
+  }
+  
+  .search-panel__container {
+    flex: 0 1 80%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .search-panel__form label,
+  .search-panel__form input {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+  }
+  
+  .search-panel__form input {
+    background: black;
+    color: white;
+    border: none;
+    border-bottom: 2px solid #F45363;
+    padding: 5px;
+  }
+  
+  .search-panel__action-elements {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+  }
+  
+  .search-panel__action-elements div {
+    align-self: center;
+  }
+  
+  .search-panel__button-filter {
+    background: #3D3D3D;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    padding: 5px 15px;
+    margin: 0 3px;
+    border-radius: 3px;
+  }
+  
+  .search-panel__button-filter:active,
+  .search-panel__button-filter:hover, 
+  .search-panel__button-filter:focus {
+    background: #F45363;
+  }
+  
+  .search-panel__button-search {
+    box-sizing: border-box;
+    background: #F45363;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    border-radius: 2px;
+    padding: 10px 30px;
+  }
+  
+  .search-panel__button-search:focus {
+    border: 2px solid red;
+  }
+</style>
+ 
+</body>
+</html>
