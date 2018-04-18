@@ -1,3 +1,6 @@
 import React from 'react';
 
-export default React.createElement('div', {className: 'logo'}, 'netflixroulette');
+export default function Logo () {
+    return <div className="logo">netflixroulette</div>;
+    
+}

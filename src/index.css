@@ -1,9 +1,4 @@
 body {
-    background: navy;
-    color: white;
-}
-
-/* body {
     background: black;
     color: lightgray;
     display: flex;
@@ -87,6 +82,7 @@ body {
   }
   
   .search-panel__button-filter {
+    box-sizing: border-box;
     background: #3D3D3D;
     color: white;
     border: none;
@@ -94,11 +90,17 @@ body {
     padding: 5px 15px;
     margin: 0 3px;
     border-radius: 3px;
+    border: 2px solid #3D3D3D;
   }
   
-  .search-panel__button-filter:active,
-  .search-panel__button-filter:hover, 
-  .search-panel__button-filter:focus {
+  .search-panel__button-filter:focus,
+  .search-panel__button-filter:active {
+    background: #F45363;
+    cursor: pointer;
+    border: 2px solid yellow;
+  }
+
+  .search-panel__button-filter:hover {
     background: #F45363;
   }
   
@@ -110,11 +112,10 @@ body {
     text-transform: uppercase;
     border-radius: 2px;
     padding: 10px 30px;
+    cursor: pointer;
+    border: 2px solid #F45363;
   }
   
   .search-panel__button-search:focus {
-    border: 2px solid red;
+    border: 2px solid yellow;
   }
-  
-  
-   */
