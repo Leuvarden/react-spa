@@ -9,13 +9,13 @@ export default class SearchPanel extends Component {
                     <label htmlFor="searchPanelInput">Find your movie</label>
                     <input type="text" id="searchPanelInput"/>
                 </div>
-            )          
+            );          
         };
 
         const filterButton = (name) => {
             return (
                 <button className="search-panel__button-filter">{name}</button>
-            )
+            );
         };
 
         return ( 

@@ -1,12 +1,12 @@
 {
   "name": "react-spa",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "server": "nodemon server.js"
   },
   "author": "Maryna Leanovich",
   "license": "ISC",
@@ -27,8 +27,17 @@
     "html-webpack-plugin": "^3.2.0",
     "nodemon": "^1.17.3",
     "style-loader": "^0.20.3",
-    "webpack": "^4.5.0",
+    "webpack": "^4.6.0",
     "webpack-cli": "^2.0.14",
-    "webpack-dev-server": "^3.1.1"
-  }
+    "webpack-dev-server": "^3.1.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leuvarden/react-spa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Leuvarden/react-spa/issues"
+  },
+  "homepage": "https://github.com/Leuvarden/react-spa#readme",
+  "description": ""
 }
