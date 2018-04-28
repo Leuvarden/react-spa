@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MainPage from './MainPage';
-import Footer from './Footer';
-import './css/index.css';
+import Footer from './main/Footer';
 import './../public/styles/styles.scss';
 
 class App extends Component {

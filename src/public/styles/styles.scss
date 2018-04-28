@@ -1,13 +1,5 @@
 @import 'colors';
 
-// body {
-//   font: $theme-font;
-//   background-color: $themeColor-Light;
-//   button {
-//     color: $themeColor-Dark
-// }
-// }
-
 body {
   background: black;
   color: lightgray;
@@ -21,16 +13,9 @@ body {
   text-transform: lowercase;
 }
 
-main {
-  height: 90vh;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: stretch;
-}
-
 .search-panel {
   flex: 0 1 auto;
-  background-image: url('https://images.unsplash.com/photo-1505489435671-80a165c60816?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=af3fb5171edc0c520c99c8061510f4b8&auto=format&fit=crop&w=831&q=80');
+  background: $black;
   display: flex;
   justify-content: center;
   text-transform: uppercase;
@@ -45,6 +30,7 @@ main {
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
+  overflow: hidden;
 }
 
 .content__empty {
@@ -52,12 +38,8 @@ main {
 }
 
 footer {
-  height: 10vh;
+  height: 70px;
   display: flex;
-}
-
-.footer-container {
-  flex: 1 1 80%;
 }
 
 .search-panel__container {
@@ -85,10 +67,10 @@ footer {
   display: flex;
   justify-content: space-between;
   margin: 15px 0;
-}
 
-.search-panel__action-elements div {
-  align-self: center;
+  div {
+    align-self: center;
+  }
 }
 
 .search-panel__button-filter {
@@ -100,17 +82,17 @@ footer {
   margin: 0 3px;
   border-radius: 3px;
   border: 2px solid $defaultItemColor;
-}
 
-.search-panel__button-filter:focus,
-.search-panel__button-filter:active {
-  background: $actionItemColor;
-  cursor: pointer;
-  border: 2px solid yellow;
-}
+  &:hover,
+  &:active {
+    background: $actionItemColor;
+    cursor: pointer;
+    border: 2px solid yellow;
+  }
 
-.search-panel__button-filter:hover {
-  background: $actionItemColor;
+  &:hover {
+    background: $actionItemColor;
+  }
 }
 
 .search-panel__button-search {
@@ -122,8 +104,49 @@ footer {
   padding: 10px 30px;
   cursor: pointer;
   border: 2px solid $actionItemColor;
+
+  &:focus {
+    border: 2px solid yellow;
+  }
 }
 
-.search-panel__button-search:focus {
-  border: 2px solid yellow;
+.content-item {
+  height: 350px;
+  width: 200px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+}
+
+.content-item__description {
+  position: relative;
+  width: 100%;
+
+  & > * {
+    display: block;
+  }
+}
+
+.content-item_title {
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: 75%;
+  overflow: hidden;
+}
+
+.content-item_genre {
+  color: grey;
+  font-size: 0.7em;
+}
+
+.content-item_year {
+  float: right;
+  top: 0;
+  color: grey;
+  font-size: 0.7em;
+  border: 1px solid grey;
+  border-radius: 2px;
+  padding: 2px;
 }
