@@ -19,7 +19,6 @@ export default class SearchPanel extends Component {
     }
 
     render () {
-
         return ( 
             <section className="search-panel">
                 <div className="search-panel__container">

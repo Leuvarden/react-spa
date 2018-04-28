@@ -13,15 +13,6 @@ body {
   text-transform: lowercase;
 }
 
-.search-panel {
-  flex: 0 1 auto;
-  background: $black;
-  display: flex;
-  justify-content: center;
-  text-transform: uppercase;
-  margin: 10px 0;
-}
-
 .content-container {
   flex: 5 1 auto;
   background: white;
@@ -42,71 +33,117 @@ footer {
   display: flex;
 }
 
-.search-panel__container {
-  flex: 0 1 80%;
+.search-panel {
+  flex: 0 1 auto;
+  background: $black;
   display: flex;
-  flex-direction: column;
-}
-
-.search-panel__form label,
-.search-panel__form input {
-  display: block;
-  width: 100%;
-  margin: 5px 0;
-}
-
-.search-panel__form input {
-  background: black;
-  color: white;
-  border: none;
-  border-bottom: 2px solid $actionItemColor;
-  padding: 5px;
-}
-
-.search-panel__action-elements {
-  display: flex;
-  justify-content: space-between;
-  margin: 15px 0;
-
-  div {
-    align-self: center;
-  }
-}
-
-.search-panel__button-filter {
-  box-sizing: border-box;
-  background: $defaultItemColor;
-  color: white;
+  justify-content: center;
   text-transform: uppercase;
-  padding: 5px 15px;
-  margin: 0 3px;
-  border-radius: 3px;
-  border: 2px solid $defaultItemColor;
+  margin: 10px 0;
 
-  &:hover,
-  &:active {
+  &__container {
+    flex: 0 1 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form label,
+  &__form input {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  &__form input {
+    background: black;
+    color: white;
+    border: none;
+    border-bottom: 2px solid $actionItemColor;
+    padding: 5px;
+  }
+
+  &__action-elements {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+
+    div {
+      align-self: center;
+    }
+  }
+
+  &__button-filter {
+    box-sizing: border-box;
+    background: $defaultItemColor;
+    color: white;
+    text-transform: uppercase;
+    padding: 5px 15px;
+    margin: 0 3px;
+    border-radius: 3px;
+    border: 2px solid $defaultItemColor;
+
+    &:hover,
+    &:active {
+      background: $actionItemColor;
+      cursor: pointer;
+      border: 2px solid yellow;
+    }
+
+    &:hover {
+      background: $actionItemColor;
+    }
+  }
+
+  &__button-search {
+    box-sizing: border-box;
     background: $actionItemColor;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 2px;
+    padding: 10px 30px;
     cursor: pointer;
-    border: 2px solid yellow;
-  }
+    border: 2px solid $actionItemColor;
 
-  &:hover {
-    background: $actionItemColor;
+    &:focus {
+      border: 2px solid yellow;
+    }
   }
 }
 
-.search-panel__button-search {
-  box-sizing: border-box;
-  background: $actionItemColor;
+.film-panel {
+  background: black;
+  margin: 10px 0;
   color: white;
-  text-transform: uppercase;
-  border-radius: 2px;
-  padding: 10px 30px;
-  cursor: pointer;
-  border: 2px solid $actionItemColor;
 
-  &:focus {
-    border: 2px solid yellow;
+  figure {
+    display: flex;
+
+    &_poster {
+      flex: 1 1 auto;
+    }
+
+    figcaption {
+      flex: 3 1 auto;
+      box-sizing: border-box;
+      padding: 10px;
+
+      h1 {
+        color: $actionItemColor;
+        margin: 5px 0;
+      }
+    }
+  }
+
+  &__button-search {
+    float: right;
+    box-sizing: border-box;
+    background: $actionItemColor;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 2px;
+    padding: 10px 30px;
+    cursor: pointer;
+    border: 2px solid $actionItemColor;
   }
 }
 
@@ -118,35 +155,35 @@ footer {
   img {
     width: 100%;
   }
-}
 
-.content-item__description {
-  position: relative;
-  width: 100%;
+  &__description {
+    position: relative;
+    width: 100%;
 
-  & > * {
-    display: block;
+    & > * {
+      display: block;
+    }
   }
-}
 
-.content-item_title {
-  text-transform: uppercase;
-  white-space: nowrap;
-  width: 75%;
-  overflow: hidden;
-}
+  &_title {
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: 75%;
+    overflow: hidden;
+  }
 
-.content-item_genre {
-  color: grey;
-  font-size: 0.7em;
-}
+  &_genre {
+    color: grey;
+    font-size: 0.7em;
+  }
 
-.content-item_year {
-  float: right;
-  top: 0;
-  color: grey;
-  font-size: 0.7em;
-  border: 1px solid grey;
-  border-radius: 2px;
-  padding: 2px;
+  &_year {
+    float: right;
+    top: 0;
+    color: grey;
+    font-size: 0.7em;
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding: 2px;
+  }
 }

@@ -12,6 +12,7 @@ export default class ContentArea extends Component {
     }
 
     getContent () {
+        // console.log(this.state.data);
         if (this.state.data) {
             const items = (this.state.data).map((el) => 
                 <ContentItem key={el.id} genres={el.genres} img={el.poster_path}
