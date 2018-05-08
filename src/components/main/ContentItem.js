@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 
 
 class ContentItem extends Component {
-    constructor (props) {
-        super(props);
-        this.baseUrl = 'http://react-cdp-api.herokuapp.com/';
-    }
 
     render () {
         const props = this.props;
         return (
-            <figure className="content-item">
-                <img src={props.img}></img>
+            <figure className="content-item" onClick={() => props.updateFilmPanel(props)}>
+                <img src={props.img} className="content-item_img"></img>
                 <figcaption className="content-item__description">
                     <span className="content-item_year">{props.date.slice(0, 4)}</span>
                     <span className="content-item_title"><b>{props.title}</b></span>
@@ -24,16 +20,23 @@ class ContentItem extends Component {
             </figure>
         );
     }
-
-    // key={el.id} genres={el.genres} img={el.poster_path}
-    //                 date={el.release_date} title={el.title} votes={el.vote_count}
-    //                 overview={el.overview}
-
-
 }
 
 ContentItem.propTypes = {
-    content: PropTypes.array
+    genres: PropTypes.array,
+    updateFilmPanel: PropTypes.func,
+    title: PropTypes.string,
+    img: PropTypes.string,
+    date: PropTypes.string
 };
+
+{/* <ContentItem 
+
+genres={el.genres} 
+img={el.poster_path}
+date={el.release_date} 
+title={el.title} 
+updateFilmPanel={this.updateFilmPanel}
+/> */}
 
 export default ContentItem;

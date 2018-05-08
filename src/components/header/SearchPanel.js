@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Logo from '../main/Logo';
 
-export default class SearchPanel extends Component {
+class SearchPanel extends Component {
     
     inputElementWithLabel() {
         return (
@@ -37,3 +37,5 @@ export default class SearchPanel extends Component {
         );
     }
 }
+
+export default SearchPanel;
