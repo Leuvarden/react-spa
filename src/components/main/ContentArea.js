@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ContentItem from './ContentItem';
 import EmptyContent from './EmptyContent';
 import FilmPanel from './FilmPanel';
+import ErrorBoundary from './../Error.js';
+import './../styles/content-area.scss';
 
 export default class ContentArea extends Component {
     constructor(props) {
@@ -16,18 +18,19 @@ export default class ContentArea extends Component {
     }
 
     getContent () {
-        console.log(this.state);
         if (this.state.contentData) {
             const items = (this.state.contentData).map((el) => 
-                <ContentItem 
-                    key={el.id} 
-                    genres={el.genres} 
-                    img={el.poster_path}
-                    date={el.release_date} 
-                    title={el.title} 
-                    overview={el.overview}
-                    updateFilmPanel={this.updateFilmPanel}
-                />
+                <ErrorBoundary key={el.id} showOnError={this.getErrorDiv()}>                 
+                    <ContentItem
+                        key={el.id} 
+                        genres={el.genres} 
+                        img={el.poster_path}
+                        date={el.release_date} 
+                        title={el.title} 
+                        overview={el.overview}
+                        updateFilmPanel={this.updateFilmPanel}
+                    />
+                </ErrorBoundary>
             );
             return items;
         } else {
@@ -67,5 +70,16 @@ export default class ContentArea extends Component {
 
     updateFilmPanel(filmProps) {
         this.setState({currentItem: filmProps});
+    }
+
+    getErrorDiv () {
+        return (
+            <figure className="content-item">
+                <img src='./../../public/img/cube.gif' className="content-item_img"></img>
+                <figcaption className="content-item__description">
+                    <span className="content-item_title"><b>Loading...</b></span>
+                </figcaption>
+            </figure>
+        );
     }
 }

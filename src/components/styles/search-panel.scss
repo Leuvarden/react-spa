@@ -1,0 +1,78 @@
+@import 'colors';
+
+.search-panel {
+  flex: 0 1 auto;
+  background: $black;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+
+  &__container {
+    flex: 0 1 80%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__form label,
+  &__form input {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+  }
+  
+  &__form input {
+    background: black;
+    color: white;
+    border: none;
+    border-bottom: 2px solid $actionItemColor;
+    padding: 5px;
+  }
+  
+  &__action-elements {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+  
+    div {
+    align-self: center;
+    }
+  }
+  
+  &__button-filter {
+    box-sizing: border-box;
+    background: $defaultItemColor;
+    color: white;
+    text-transform: uppercase;
+    padding: 5px 15px;
+    margin: 0 3px;
+    border-radius: 3px;
+    border: 2px solid $defaultItemColor;
+  
+    &:hover,
+    &:active {
+    background: $actionItemColor;
+    cursor: pointer;
+    border: 2px solid yellow;
+    }
+  
+    &:hover {
+    background: $actionItemColor;
+    }
+  }
+  
+  &__button-search {
+    float: right;
+    box-sizing: border-box;
+    background: $actionItemColor;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 2px;
+    padding: 10px 30px;
+    cursor: pointer;
+    border: 2px solid $actionItemColor;
+  
+    &:focus {
+    border: 2px solid yellow;
+    }
+  }
+  }

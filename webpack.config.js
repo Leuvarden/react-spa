@@ -39,10 +39,10 @@ module.exports = function (env, options) {
                 template: './src/index.html'
             }),
             new ExtractTextPlugin('[name].css'),
-            new StyleLintPlugin({
-                configFile: '.stylelintrc',
-                failOnError: false
-            })
+            // new StyleLintPlugin({
+            //     configFile: '.stylelintrc',
+            //     failOnError: false
+            // })
         ]
     };
 

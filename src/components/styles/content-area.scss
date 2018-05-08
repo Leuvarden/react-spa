@@ -1,0 +1,57 @@
+@import 'colors';
+
+.content-container {
+    flex: 5 1 auto;
+    background: white;
+    color: black;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    overflow: hidden;
+  }
+  
+  .content__empty {
+    font-size: 2em;
+  }
+
+  .content-item {
+    height: 350px;
+    width: 200px;
+    overflow: hidden;
+  
+    &_img {
+      width: 100%;
+    }
+  
+    &__description {
+      position: relative;
+      width: 100%;
+  
+      & > * {
+        display: block;
+      }
+    }
+  
+    &_title {
+      text-transform: uppercase;
+      white-space: nowrap;
+      width: 75%;
+      overflow: hidden;
+    }
+  
+    &_genre {
+      color: grey;
+      font-size: 0.7em;
+    }
+  
+    &_year {
+      float: right;
+      top: 0;
+      color: grey;
+      font-size: 0.7em;
+      border: 1px solid grey;
+      border-radius: 2px;
+      padding: 2px;
+    }
+  }
