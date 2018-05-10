@@ -4,25 +4,38 @@ import './../../styles/film-panel.scss';
 
 export default class FilmPanel extends Component {
     render () {
-        const props = this.props;
-
         return (
             <section className="film-panel">
                 <figure>
-                    <div className="film-panel_poster"> 
-                        <img src={props.img}></img>
-                    </div>
-                    <figcaption className="film-panel_description">
-                        <h1>{props.title}</h1>
-                        <p className="film-panel_category">{props.genres[0]}</p>
-                        <p>
-                            <span className="film-panel_year">{props.date.slice(0, 4)}</span>
-                            {/* <span className="film-panel_duration">154 min</span> */}
-                        </p>
-                        <p className="film-panel_overview">{props.overview}</p>  
-                    </figcaption>
+                    {this.getPoster()}
+                    {this.getCaption()}
                 </figure>
             </section>
+        );
+    }
+
+    getCaption () {
+        return (
+            <figcaption className="film-panel_description">
+                <h1>{this.props.title}</h1>
+                <p className="film-panel_category">
+                    {this.props.genres[0]}
+                </p>
+                <p className="film-panel_year">
+                    {this.props.date.slice(0, 4)}
+                </p>
+                <p className="film-panel_overview">
+                    {this.props.overview}
+                </p>  
+            </figcaption>
+        );
+    }
+
+    getPoster () {
+        return (
+            <div className="film-panel_poster"> 
+                <img src={this.props.img}></img>
+            </div>
         );
     }
 }

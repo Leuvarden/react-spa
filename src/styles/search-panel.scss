@@ -13,29 +13,25 @@
     flex-direction: column;
   }
   
-  &__form label,
-  &__form input {
-    display: block;
-    width: 100%;
-    margin: 5px 0;
-  }
-  
-  &__form input {
-    background: black;
-    color: white;
-    border: none;
-    border-bottom: 2px solid $actionItemColor;
-    padding: 5px;
-  }
-  
-  &__action-elements {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-  
-    div {
-    align-self: center;
+  &__form {
+
+    label, input {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
     }
+
+    input {
+      background: black;
+      color: white;
+      border: none;
+      border-bottom: 2px solid $actionItemColor;
+      padding: 5px;
+    }
+}
+
+  &__filter {
+    padding: 10px 0;
   }
   
   &__button-filter {
@@ -67,7 +63,7 @@
     color: white;
     text-transform: uppercase;
     border-radius: 2px;
-    padding: 10px 30px;
+    padding: 5px 30px;
     cursor: pointer;
     border: 2px solid $actionItemColor;
   

@@ -3,12 +3,13 @@ import ContentItem from './ContentItem';
 import EmptyContent from './EmptyContent';
 import FilmPanel from './FilmPanel';
 import ErrorBoundary from './../Error.js';
+import FetchItems from './FetchItems';
 import './../../styles/content-area.scss';
 
 export default class ContentArea extends Component {
     constructor(props) {
         super(props);
-        this.baseUrl = 'http://react-cdp-api.herokuapp.com/';
+        this.url = 'http://react-cdp-api.herokuapp.com/';
 
         this.state = {
             contentData: []
@@ -53,7 +54,8 @@ export default class ContentArea extends Component {
         }
     }
 
-    render() {    
+    render() {   
+        // console.log(this.state); 
         return (
             <section className='content-container'>
                 {this.getPanel()}
@@ -63,12 +65,7 @@ export default class ContentArea extends Component {
     }
 
     componentDidMount() {
-        //babel doesn't transpile fetch 
-        require('es6-promise').polyfill();
-        require('isomorphic-fetch');
-
-        fetch(`${this.baseUrl}movies`)
-            .then(response => response.json())
+        FetchItems(`${this.url}movies`)
             .then(response => this.setState({contentData: response.data }) );
     }
 
