@@ -3,7 +3,7 @@ import ContentItem from './ContentItem';
 import EmptyContent from './EmptyContent';
 import FilmPanel from './FilmPanel';
 import ErrorBoundary from './../Error.js';
-import './../styles/content-area.scss';
+import './../../styles/content-area.scss';
 
 export default class ContentArea extends Component {
     constructor(props) {
@@ -63,6 +63,10 @@ export default class ContentArea extends Component {
     }
 
     componentDidMount() {
+        //babel doesn't transpile fetch 
+        require('es6-promise').polyfill();
+        require('isomorphic-fetch');
+
         fetch(`${this.baseUrl}movies`)
             .then(response => response.json())
             .then(response => this.setState({contentData: response.data }) );

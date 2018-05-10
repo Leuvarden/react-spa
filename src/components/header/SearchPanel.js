@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Logo from '../main/Logo';
-import './../styles/search-panel.scss';
+import './../../styles/search-panel.scss';
 
 class SearchPanel extends Component {
     
