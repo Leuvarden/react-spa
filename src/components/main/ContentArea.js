@@ -66,7 +66,8 @@ export default class ContentArea extends Component {
 
     componentDidMount() {
         FetchItems(`${this.url}movies`)
-            .then(response => this.setState({contentData: response.data }) );
+            .then(response => this.setState({contentData: response.data }) )
+            .catch(err => console.warn('Request Failed' + err)); //eslint-disable-line 
     }
 
     updateFilmPanel(filmProps) {
