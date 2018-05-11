@@ -19,7 +19,7 @@ export default class ContentArea extends Component {
     }
 
     getContent () {
-        if (this.state.contentData) {
+        if (this.state.contentData.length) {
             const items = (this.state.contentData).map((el) => 
                 <ErrorBoundary key={el.id} showOnError={this.getErrorDiv()}>                 
                     <ContentItem
@@ -74,7 +74,7 @@ export default class ContentArea extends Component {
         this.setState({currentItem: filmProps});
     }
 
-    getErrorDiv () {
+    getErrorDiv() {
         return (
             <figure className="content-item">
                 <img src='./../../public/img/cube.gif' className="content-item_img"></img>

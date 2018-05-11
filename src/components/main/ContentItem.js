@@ -10,7 +10,10 @@ class ContentItem extends Component {
             <figure className="content-item" onClick={() => props.updateFilmPanel(props)}>
                 <img src={props.img} className="content-item_img"></img>
                 <figcaption className="content-item__description">
-                    <span className="content-item_year">{props.date.slice(0, 4) || null}</span>
+                    <span className="content-item_year">
+                        {/* todo: move it smwhere else */}
+                        {props.date.slice(0, 4)}
+                    </span>
                     <span className="content-item_title"><b>{props.title}</b></span>
                     <span className="content-item_genre">
                         {/* todo: move it smwhere else */}

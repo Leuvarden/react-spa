@@ -21,7 +21,7 @@ describe ('ContentItem', () => {
     });
 
     it('receives handler', () => {
-        const item = mount(
+        const item = shallow(
             <ContentItem {...defaultProps}/>
         );
 

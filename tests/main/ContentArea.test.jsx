@@ -1,6 +1,7 @@
 import React from 'react';
 import ContentArea from './../../src/components/main/ContentArea.js';
-import response from './../movies.json';
+import response from './../movies';
+
 /* eslint-disable no-undef */
 
 describe ('ContentArea', () => {
@@ -11,13 +12,27 @@ describe ('ContentArea', () => {
         expect(main).toMatchSnapshot();
     });
 
-    xit('should add content items after fetching info', () => {
-        //causes error
-        //invalid json response body at undefined reason: Unexpected end of JSON input
-        fetch.mockResponse(response, {status: 200});
-        const component = mount(<ContentArea/>);
+    it ('renders content items if there is 3 items', () => {
+        const main = shallow(<ContentArea />);
 
-        expect(fetch.mock.calls).toHaveLength(1);
-        expect(component.find('.content-item')).toHaveLength(3);
+        main.setState({contentData: response.data});
+
+        expect(main).toMatchSnapshot();
     });
+
+    it ('renders message if there is no content in response', () => {
+        const main = shallow(<ContentArea />);
+
+        main.setState({contentData: []});
+
+        expect(main).toMatchSnapshot();
+    });
+
+    it('renders film panel if there is current items', () => {
+        const main = shallow(<ContentArea />);
+
+        main.setState({currentItem: response.data[0]});
+
+        expect(main).toMatchSnapshot();
+    }); 
 });
