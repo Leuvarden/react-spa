@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
+// const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = function (env, options) {
 
@@ -39,10 +39,10 @@ module.exports = function (env, options) {
                 template: './src/index.html'
             }),
             new ExtractTextPlugin('[name].css'),
-            new StyleLintPlugin({
-                configFile: '.stylelintrc',
-                failOnError: false
-            })
+            // new StyleLintPlugin({
+            //     configFile: '.stylelintrc',
+            //     failOnError: false
+            // })
         ]
     };
 

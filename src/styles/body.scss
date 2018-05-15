@@ -1,0 +1,19 @@
+@import 'colors';
+
+body {
+  background: black;
+  color: lightgray;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.logo {
+  color: $actionItemColor;
+  margin: 0 0 20px 0;
+  text-transform: lowercase;
+}
+
+footer {
+  height: 70px;
+  display: flex;
+}

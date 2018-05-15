@@ -1,0 +1,41 @@
+@import 'colors';
+
+.film-panel {
+    background: black;
+    width: 100%;
+    color: white;
+  
+    figure {
+      display: flex;
+      flex-flow: row nowrap;
+      margin: 0;
+  
+      img {
+        flex: 1 1 auto;
+        margin: 40px 60px;
+        max-height: 320px;
+      }
+  
+      figcaption {
+        flex: 3 1 auto;
+  
+        h1 {
+          color: $actionItemColor;
+        }
+      }
+    }
+  
+    &_category,
+    &_overview {
+      font-weight: 400;
+    }
+  
+    &_year {
+      font-weight: 600;
+      margin: 0 30px 0 0;
+    }
+  
+    &_duration {
+      font-weight: 600;
+    }
+  }

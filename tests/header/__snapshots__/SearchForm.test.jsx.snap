@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm renders as expected 1`] = `
+<div
+  className="search-panel__form"
+>
+  <label
+    htmlFor="searchPanelInput"
+  >
+    Find your movie
+  </label>
+  <input
+    id="searchPanelInput"
+    type="text"
+  />
+</div>
+`;

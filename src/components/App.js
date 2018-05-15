@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import MainPage from './MainPage';
-import Footer from './Footer';
-import './css/index.css';
-import './../public/styles/styles.scss';
+import Footer from './main/Footer';
+import './../styles/body.scss';
+import ErrorBoundary from './Error.js';
 
 class App extends Component {
     render () {
         return (
             <div>
-                <MainPage />
+                <ErrorBoundary showOnError={<h1>Something went wrong</h1>}>
+                    <MainPage />
+                </ErrorBoundary>
                 <Footer />
             </div>
         );
