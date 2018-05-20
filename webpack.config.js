@@ -15,7 +15,7 @@ module.exports = function (env, options) {
         },
         devtool: isProduction ? 'none' : 'source-map',
         resolve: {
-            extensions: ['.js']
+            extensions: ['.js', '.jsx']
         },
         module: {
             rules: [

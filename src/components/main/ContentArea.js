@@ -1,26 +1,22 @@
 import React, { Component } from 'react';
-import ContentItem from './ContentItem';
+import {connect} from 'react-redux';
+import { selectMovie, fetchMovies } from './../actions';
+
+import ErrorBoundary from './../Error.js';
 import EmptyContent from './EmptyContent';
 import FilmPanel from './FilmPanel';
-import ErrorBoundary from './../Error.js';
-import FetchItems from './FetchItems';
+import ContentItem from './ContentItem';
 import './../../styles/content-area.scss';
 
-export default class ContentArea extends Component {
+class ContentArea extends Component {
     constructor(props) {
         super(props);
-        this.url = 'http://react-cdp-api.herokuapp.com/';
-
-        this.state = {
-            contentData: []
-        };
-
-        this.updateFilmPanel = this.updateFilmPanel.bind(this);
+        this.url = 'http://react-cdp-api.herokuapp.com/movies';
     }
 
     getContent () {
-        if (this.state.contentData.length) {
-            const items = (this.state.contentData).map((el) => 
+        if (this.props.movies && this.props.movies.length) {
+            const items = (this.props.movies).map((el) => 
                 <ErrorBoundary key={el.id} showOnError={this.getErrorDiv()}>                 
                     <ContentItem
                         key={el.id} 
@@ -29,7 +25,7 @@ export default class ContentArea extends Component {
                         date={el.release_date} 
                         title={el.title} 
                         overview={el.overview}
-                        updateFilmPanel={this.updateFilmPanel}
+                        updateFilmPanel={() => this.props.selectMovie(el)}
                     />
                 </ErrorBoundary>
             );
@@ -39,39 +35,18 @@ export default class ContentArea extends Component {
         }
     }
 
-    getPanel() {
-        if (!this.state.currentItem) {
-            return;
-        } else {
-            let item = this.state.currentItem;
-            return <FilmPanel 
-                img={item.img}
-                title={item.title}
-                genres={item.genres}
-                overview={item.overview} 
-                date={item.date}
-            />;
-        }
-    }
-
     render() {   
-        // console.log(this.state); 
         return (
             <section className='content-container'>
-                {this.getPanel()}
+                <FilmPanel /> 
                 {this.getContent()}
             </section>
         );
     }
 
     componentDidMount() {
-        FetchItems(`${this.url}movies`)
-            .then(response => this.setState({contentData: response.data }) )
-            .catch(err => console.warn('Request Failed' + err)); //eslint-disable-line 
-    }
-
-    updateFilmPanel(filmProps) {
-        this.setState({currentItem: filmProps});
+        const {dispatch} = this.props;
+        dispatch(fetchMovies(this.url))
     }
 
     getErrorDiv() {
@@ -85,3 +60,20 @@ export default class ContentArea extends Component {
         );
     }
 }
+
+let mapPropsToStore = (state) => ({
+    movies: state.data.data,
+    activeMovie: state.activeMovie
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    selectMovie: (prop) => {
+        dispatch(selectMovie(prop));
+    }, 
+    dispatch: dispatch
+});
+
+export default connect(
+    mapPropsToStore, 
+    mapDispatchToProps
+)(ContentArea);
