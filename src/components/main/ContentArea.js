@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { selectMovie, fetchMovies } from './../actions';
+import _ from 'lodash';
 
 import ErrorBoundary from './../Error.js';
 import EmptyContent from './EmptyContent';
@@ -15,8 +16,10 @@ class ContentArea extends Component {
     }
 
     getContent () {
-        if (this.props.movies && this.props.movies.length) {
-            const items = (this.props.movies).map((el) => 
+        let movies = this.props.movies;
+
+        if (this.props.movies && movies.length) {
+            const items = this.sortMovies(movies).map((el) => 
                 <ErrorBoundary key={el.id} showOnError={this.getErrorDiv()}>                 
                     <ContentItem
                         key={el.id} 
@@ -25,7 +28,11 @@ class ContentArea extends Component {
                         date={el.release_date} 
                         title={el.title} 
                         overview={el.overview}
-                        updateFilmPanel={() => this.props.selectMovie(el)}
+                        updateFilmPanel={() => {
+                            this.props.selectMovie(el);
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                        }}
                     />
                 </ErrorBoundary>
             );
@@ -46,7 +53,7 @@ class ContentArea extends Component {
 
     componentDidMount() {
         const {dispatch} = this.props;
-        dispatch(fetchMovies(this.url))
+        dispatch(fetchMovies(this.url));
     }
 
     getErrorDiv() {
@@ -59,11 +66,19 @@ class ContentArea extends Component {
             </figure>
         );
     }
+
+    sortMovies (movies) {
+        let criterion = this.props.sortBy || 'title';
+        if (movies) {
+            return _.orderBy(movies, [criterion], 'asc');
+        }
+    }
 }
 
 let mapPropsToStore = (state) => ({
     movies: state.data.data,
-    activeMovie: state.activeMovie
+    activeMovie: state.activeMovie,
+    sortBy: state.sortBy
 });
 
 const mapDispatchToProps = (dispatch) => ({

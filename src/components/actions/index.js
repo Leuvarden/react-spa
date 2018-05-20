@@ -1,6 +1,6 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
-const url1 = 'http://react-cdp-api.herokuapp.com/'
+const url1 = 'http://react-cdp-api.herokuapp.com/';
 
 export const selectMovie = (movie) => {
     return {
@@ -20,9 +20,14 @@ export const fetchMovies = (url) => {
 };
 
 export const setMoviesToStore = (data) => {
-    console.log(data)
+    // console.log(data)
     return {
         type: 'SET_MOVIES_TO_STORE',
         data: data
     };
 };
+
+export const setSorting = criterion => ({
+    type: 'SET_SORTING',
+    criterion: criterion
+});

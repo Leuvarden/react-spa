@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Logo from './../main/Logo';
 import SearchForm from './SearchForm';
 import SearchFilter from './SearchFilter';
+import SortPanel from './SortPanel';
 import './../../styles/search-panel.scss';
 
 class SearchPanel extends Component {
@@ -12,6 +13,7 @@ class SearchPanel extends Component {
                     <Logo />
                     <SearchForm />
                     <SearchFilter />
+                    <SortPanel />
                 </div>
             </section>
         );

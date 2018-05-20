@@ -11,7 +11,7 @@ let activeMovie = (state = null, action) => {
 };
 
 const dataReducer = (state = [], action) => {
-    console.log(action);
+    // console.log(action);
     switch (action.type) {
     case 'SET_MOVIES_TO_STORE':
         return {
@@ -23,9 +23,20 @@ const dataReducer = (state = [], action) => {
     }
 };
 
+const sortBy = (state = 'release_date', action) => {
+    // console.log(action)
+    switch (action.type) {
+    case 'SET_SORTING':
+        return action.criterion;
+    default:
+        return state;
+    }
+};
+
 let rootReducer = combineReducers({
     data: dataReducer,
-    activeMovie: activeMovie
+    activeMovie,
+    sortBy
 });
 
 export default rootReducer;
