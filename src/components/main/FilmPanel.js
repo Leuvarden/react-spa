@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import './../../styles/film-panel.scss';
 
-class FilmPanel extends Component {
+export class FilmPanel extends Component {
     render () {
         return this.props.movie && (
             <section className="film-panel">
@@ -50,9 +50,11 @@ export default connect(
 )(FilmPanel);
 
 FilmPanel.propTypes = {
-    genres: PropTypes.array,
-    overview: PropTypes.string,
-    title: PropTypes.string,
-    poster_path: PropTypes.string,
-    release_date: PropTypes.string
+    movie: PropTypes.arrayOf({
+        genres: PropTypes.array,
+        overview: PropTypes.string,
+        title: PropTypes.string,
+        poster_path: PropTypes.string,
+        release_date: PropTypes.string
+    })
 };

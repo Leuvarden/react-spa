@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 
-
-let activeMovie = (state = null, action) => {
+export let activeMovie = (state = null, action) => {
     switch (action.type) {
     case 'MOVIE_SELECTED':
         return action.payload;
@@ -10,7 +9,7 @@ let activeMovie = (state = null, action) => {
     }
 };
 
-const dataReducer = (state = [], action) => {
+export const dataReducer = (state = [], action) => {
     // console.log(action);
     switch (action.type) {
     case 'SET_MOVIES_TO_STORE':
@@ -23,7 +22,7 @@ const dataReducer = (state = [], action) => {
     }
 };
 
-const sortBy = (state = 'release_date', action) => {
+export const sortBy = (state = 'release_date', action) => {
     // console.log(action)
     switch (action.type) {
     case 'SET_SORTING':

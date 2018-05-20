@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SortButton from './SortButton.js';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class SortPanel extends Component {
     render () {
@@ -25,3 +26,7 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(SortPanel);
+
+SortPanel.propTypes = {
+    moviesFound: PropTypes.number
+};

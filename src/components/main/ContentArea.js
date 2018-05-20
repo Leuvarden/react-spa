@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import { selectMovie, fetchMovies } from './../actions';
 import _ from 'lodash';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { selectMovie, fetchMovies } from './../actions';
 
 import ErrorBoundary from './../Error.js';
 import EmptyContent from './EmptyContent';
@@ -9,7 +10,7 @@ import FilmPanel from './FilmPanel';
 import ContentItem from './ContentItem';
 import './../../styles/content-area.scss';
 
-class ContentArea extends Component {
+export class ContentArea extends Component {
     constructor(props) {
         super(props);
         this.url = 'http://react-cdp-api.herokuapp.com/movies';
@@ -92,3 +93,12 @@ export default connect(
     mapPropsToStore, 
     mapDispatchToProps
 )(ContentArea);
+
+ContentArea.propTypes = {
+    movies: PropTypes.arrayOf(
+        PropTypes.object
+    ),
+    selectMovie: PropTypes.func,
+    dispatch: PropTypes.func,
+    sortBy: PropTypes.string,
+};
