@@ -2,7 +2,7 @@ import _ from 'lodash';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { selectMovie, fetchMovies } from './../actions';
+import { selectMovie, fetchMovies } from './../../actions';
 
 import ErrorBoundary from './../Error.js';
 import EmptyContent from './EmptyContent';

@@ -71,4 +71,29 @@
     border: 2px solid yellow;
     }
   }
+
+  &__sorting {
+    text-transform: capitalize;
+    padding: 10px 0;
+
+    .sorting__buttons {
+      float: right;
+
+      button {
+        background-color: transparent;
+        border: none;
+        color: $actionItemColor;
+        margin-left: 5px;
+
+        &:disabled {
+          color: $defaultItemColor;
+        }
+
+        &:focus,
+        &:hover {
+          background-color: $themeColor-Light;
+        }
+      }
+    }
+  }
   }

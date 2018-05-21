@@ -49,6 +49,28 @@ exports[`SearchPanel renders as expected 1`] = `
         Search
       </button>
     </div>
+    <div
+      class="search-panel__sorting"
+    >
+      <span
+        class="movies-count"
+      >
+        0 movies found
+      </span>
+      <span
+        class="sorting__buttons"
+      >
+        <label>
+          Sort by:
+          <button>
+            release date
+          </button>
+          <button>
+            title
+          </button>
+        </label>
+      </span>
+    </div>
   </div>
 </section>
 `;

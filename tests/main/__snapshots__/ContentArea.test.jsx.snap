@@ -4,20 +4,4 @@ exports[`ContentArea renders as expected 1`] = `<ContentArea />`;
 
 exports[`ContentArea renders content items if there is 3 items 1`] = `<ContentArea />`;
 
-exports[`ContentArea renders film panel if there is current items 1`] = `
-<section
-  className="content-container"
->
-  <FilmPanel
-    genres={
-      Array [
-        "Romance",
-        "Drama",
-      ]
-    }
-    overview="People who are on fishing boats in a secluded countryside wake up to their deepest desires.  Money, sex, power ... In the uninhabited desert where there is endless desire, it turns "
-    title="Covet: The Island of Desire"
-  />
-  <EmptyContent />
-</section>
-`;
+exports[`ContentArea renders film panel if there is current items 1`] = `<ContentArea />`;

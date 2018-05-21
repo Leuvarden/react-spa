@@ -50,11 +50,11 @@ export default connect(
 )(FilmPanel);
 
 FilmPanel.propTypes = {
-    movie: PropTypes.arrayOf({
-        genres: PropTypes.array,
-        overview: PropTypes.string,
-        title: PropTypes.string,
-        poster_path: PropTypes.string,
-        release_date: PropTypes.string
-    })
+    movie: PropTypes.object,
+    genres: PropTypes.array,
+    overview: PropTypes.string,
+    title: PropTypes.string,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string
+    
 };

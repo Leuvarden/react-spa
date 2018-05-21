@@ -2,7 +2,7 @@
 
 exports[`EmptyContent renders as expected 1`] = `
 <div
-  className="content__empty"
+  class="content__empty"
 >
   No films found
 </div>

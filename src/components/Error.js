@@ -20,7 +20,7 @@ class ErrorBoundary extends Component {
 }
 
 ErrorBoundary.propTypes = {
-    children: PropTypes.object,
+    children: PropTypes.string,
     showOnError: PropTypes.object
 };
 

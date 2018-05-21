@@ -5,15 +5,17 @@ import { FilmPanel } from './../../src/components/main/FilmPanel.js';
 describe ('FilmPanel', () => {
 
     const defaultProps = {
-        genres: [ 'Adventure', 'Science'],
-        poster_path: 'poster_path',
-        release_date: '2014-05-02',
-        title:'Pulp Fiction',
-        overview:'Lorem ipsum dolem sit amet'
+        movie: {
+            genres: [ 'Adventure', 'Science'],
+            poster_path: 'poster_path',
+            release_date: '2014-05-02',
+            title:'Pulp Fiction',
+            overview:'Lorem ipsum dolem sit amet'
+        }
     };
 
     it('renders as expected', () => {
-        const item = shallow(
+        const item = render(
             <FilmPanel {...defaultProps}/>
         );
     

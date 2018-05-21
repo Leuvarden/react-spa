@@ -1,5 +1,10 @@
-import * as actions from './../../src/components/actions';
+import * as actions from './../../src/actions';
 import response from './../movies';
+import configureMockStore from 'redux-mock-store';
+import fetchMock from 'fetch-mock';
+import thunk from 'redux-thunk';
+
+/* eslint-disable no-undef */
 
 describe('actions', () => {
 
@@ -7,7 +12,7 @@ describe('actions', () => {
         const movie = {
             title: 'title',
             year: '2018'
-        }
+        };
 
         const expectedAction = {
             type: 'MOVIE_SELECTED',
@@ -31,7 +36,7 @@ describe('actions', () => {
     });
 
     it('should create an action to set sorting', () => {
-        const sort = 'title'
+        const sort = 'title';
 
         const expectedAction = {
             type: 'SET_SORTING',
@@ -42,3 +47,31 @@ describe('actions', () => {
 
     });
 });
+
+describe('async actions', () => {
+    const middlewares = [thunk];
+    const mockStore = configureMockStore(middlewares);
+
+    afterEach(() => {
+        fetchMock.reset();
+        fetchMock.restore();
+    });
+
+    it('returns json response with movies data', () => {
+        window.fetch = jest.fn().mockImplementation(() =>
+            Promise.resolve(response)
+        );
+
+        const expectedAction = [{
+            type: 'SET_MOVIES_TO_STORE',
+            data: response.data
+        }];
+
+        const store = mockStore({ movies : response.data});
+
+        return store.dispatch(actions.fetchMovies()).then(() => {
+            expect(store.getActions()).toEqual(expectedAction);
+        });
+    });
+});
+

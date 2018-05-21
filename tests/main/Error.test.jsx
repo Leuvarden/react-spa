@@ -18,12 +18,12 @@ describe ('ErrorBoundary', () => {
 
     it('renders as expected with error', () => {
         const item = shallow(
-            <ErrorBoundary {...defaultProps} />
+            <ErrorBoundary {...defaultProps}>huh</ErrorBoundary>
         );
 
-        item.setState({hasError: true});
+        const itemUpdate = item.setState({hasError: true});
     
-        expect(item).toMatchSnapshot();
+        expect(itemUpdate).toMatchSnapshot();
     });
 
 });

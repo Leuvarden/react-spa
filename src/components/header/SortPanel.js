@@ -6,16 +6,18 @@ import PropTypes from 'prop-types';
 class SortPanel extends Component {
     render () {
         return (
-            <div>
-                <span>{this.props.moviesFound} movies found</span>
+            <div className="search-panel__sorting">
+                <span className="movies-count">
+                    {this.props.moviesFound} movies found
+                </span>
     
-                <p>
+                <span className="sorting__buttons">
                     <label>
                     Sort by:
                         <SortButton criterion='release_date'>release date</SortButton>
                         <SortButton criterion='title'>title</SortButton>
                     </label>
-                </p>
+                </span>
             </div>
         );
     }

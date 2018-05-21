@@ -1,3 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilmPanel renders as expected 1`] = `""`;
+exports[`FilmPanel renders as expected 1`] = `
+<section
+  class="film-panel"
+>
+  <figure>
+    <div
+      class="film-panel_poster"
+    >
+      <img
+        src="poster_path"
+      />
+    </div>
+    <figcaption
+      class="film-panel_description"
+    >
+      <h1>
+        Pulp Fiction
+      </h1>
+      <p
+        class="film-panel_category"
+      >
+        Adventure
+      </p>
+      <p
+        class="film-panel_year"
+      >
+        2014
+      </p>
+      <p
+        class="film-panel_overview"
+      >
+        Lorem ipsum dolem sit amet
+      </p>
+    </figcaption>
+  </figure>
+</section>
+`;
