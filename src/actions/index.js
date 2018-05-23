@@ -1,10 +1,10 @@
-import * as actions from './constants';
+import * as constants from './constants';
 
 const url = 'http://react-cdp-api.herokuapp.com/movies';
 
 export const selectMovie = (movie) => {
     return {
-        type: actions.MOVIE_SELECTED,
+        type: constants.MOVIE_SELECTED,
         payload: movie
     };
 };
@@ -20,17 +20,22 @@ export const fetchMovies = () => {
 
 export const setMoviesToStore = (data) => {
     return {
-        type: actions.SET_MOVIES_TO_STORE,
-        data: data
+        type: constants.SET_MOVIES_TO_STORE,
+        data
     };
 };
 
 export const setSorting = criterion => ({
-    type: actions.SET_SORTING,
-    criterion: criterion
+    type: constants.SET_SORTING,
+    criterion
 });
 
-export const setSearch = search => ({
-    type: actions.SET_SEARCH,
-    search: search
+export const setSearchCriterion = criterion => ({
+    type: constants.SET_SEARCH,
+    criterion
+});
+
+export const setSearchTerm = term => ({
+    type: constants.SEARCH_FOR,
+    term
 });

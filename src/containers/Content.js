@@ -8,7 +8,7 @@ const sortMovies = (movies=[], sortBy='title') => orderBy(movies, [sortBy], 'asc
 let mapStateToProps = (state) => ({
     movies: sortMovies(state.data.data, state.sortBy),
     activeMovie: state.activeMovie,
-    sortBy: state.sortBy
+    searchTerm: state.searchTerm
 });
 
 const mapDispatchToProps = (dispatch) => ({

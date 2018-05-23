@@ -19,13 +19,16 @@ class ContentArea extends Component {
     }
     
     componentDidMount() {
-        this.props.fetchMovies();
+        if (!this.props.searchTerm) {
+            this.props.fetchMovies();
+        }
     }
 
     getContent() {
         let movies = this.props.movies;
 
         if (this.props.movies && movies.length) {
+            // console.log(movies)
             return movies.map((el) => 
                 <ErrorBoundary 
                     key={el.id} 
