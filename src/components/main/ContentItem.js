@@ -5,7 +5,6 @@ class ContentItem extends Component {
 
     render () {
         const props = this.props;
-
         return (
             <figure className="content-item" onClick={() => props.updateFilmPanel(props)}>
                 <img src={props.img} className="content-item_img"></img>

@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 const SortButton = ({ active, children, onClick }) => (
     <button
         onClick={onClick}
-        disabled={active}
-    >
+        disabled={active}    >
         {children}
     </button>
 );
@@ -18,15 +17,16 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
     onClick: () => dispatch(setSorting(props.criterion))
-});
+}
+
+);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SortButton);
 
 SortButton.propTypes = {
     active: PropTypes.bool,
     children: PropTypes.string,
     onClick: PropTypes.func
 };
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(SortButton);

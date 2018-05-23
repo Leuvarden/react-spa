@@ -1,14 +1,15 @@
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
+import * as actions from './constants';
+
+const url = 'http://react-cdp-api.herokuapp.com/movies';
 
 export const selectMovie = (movie) => {
     return {
-        type: 'MOVIE_SELECTED',
+        type: actions.MOVIE_SELECTED,
         payload: movie
     };
 };
 
-export const fetchMovies = (url) => {
+export const fetchMovies = () => {
     return (dispatch) => {
         return fetch(url)
             .then(response => response.json())
@@ -19,12 +20,17 @@ export const fetchMovies = (url) => {
 
 export const setMoviesToStore = (data) => {
     return {
-        type: 'SET_MOVIES_TO_STORE',
+        type: actions.SET_MOVIES_TO_STORE,
         data: data
     };
 };
 
 export const setSorting = criterion => ({
-    type: 'SET_SORTING',
+    type: actions.SET_SORTING,
     criterion: criterion
+});
+
+export const setSearch = search => ({
+    type: actions.SET_SEARCH,
+    search: search
 });

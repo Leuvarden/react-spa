@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import './../../styles/film-panel.scss';
 
@@ -41,13 +40,15 @@ export class FilmPanel extends Component {
     }
 }
 
-let mapPropsToStore = (state) => ({
-    movie: state.activeMovie
-});
+// let mapPropsToStore = (state) => ({
+//     movie: state.activeMovie,
+// });
 
-export default connect(
-    mapPropsToStore, 
-)(FilmPanel);
+// export default connect(
+//     mapPropsToStore, 
+// )(FilmPanel);
+
+export default FilmPanel;
 
 FilmPanel.propTypes = {
     movie: PropTypes.object,
@@ -56,5 +57,4 @@ FilmPanel.propTypes = {
     title: PropTypes.string,
     poster_path: PropTypes.string,
     release_date: PropTypes.string
-    
 };

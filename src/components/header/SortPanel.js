@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import SortButton from './SortButton.js';
-import { connect } from 'react-redux';
+import SortButton from './SortButton';
 import PropTypes from 'prop-types';
 
 class SortPanel extends Component {
@@ -14,20 +13,16 @@ class SortPanel extends Component {
                 <span className="sorting__buttons">
                     <label>
                     Sort by:
-                        <SortButton criterion='release_date'>release date</SortButton>
-                        <SortButton criterion='title'>title</SortButton>
                     </label>
+                    <SortButton criterion='release_date'>release date</SortButton>
+                    <SortButton criterion='title'>title</SortButton>
                 </span>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return { moviesFound: state.data.data ? state.data.data.length : 0};
-};
-
-export default connect(mapStateToProps)(SortPanel);
+export default SortPanel;
 
 SortPanel.propTypes = {
     moviesFound: PropTypes.number

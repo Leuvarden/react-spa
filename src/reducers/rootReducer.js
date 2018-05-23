@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
+import * as actions from './../actions/constants';
 
 export let activeMovie = (state = null, action) => {
     switch (action.type) {
-    case 'MOVIE_SELECTED':
+    case actions.MOVIE_SELECTED:
         return action.payload;
     default:
         return state;
@@ -10,9 +11,8 @@ export let activeMovie = (state = null, action) => {
 };
 
 export const dataReducer = (state = [], action) => {
-    // console.log(action);
     switch (action.type) {
-    case 'SET_MOVIES_TO_STORE':
+    case actions.SET_MOVIES_TO_STORE:
         return {
             ...state,
             data: action.data
@@ -23,10 +23,18 @@ export const dataReducer = (state = [], action) => {
 };
 
 export const sortBy = (state = 'release_date', action) => {
-    // console.log(action)
     switch (action.type) {
-    case 'SET_SORTING':
+    case actions.SET_SORTING:
         return action.criterion;
+    default:
+        return state;
+    }
+};
+
+export const searchBy = (state = 'title', action) => {
+    switch (action.type) {
+    case action.SET_SORTING:
+        return action.search;
     default:
         return state;
     }
@@ -35,7 +43,8 @@ export const sortBy = (state = 'release_date', action) => {
 let rootReducer = combineReducers({
     data: dataReducer,
     activeMovie,
-    sortBy
+    sortBy,
+    searchBy
 });
 
 export default rootReducer;

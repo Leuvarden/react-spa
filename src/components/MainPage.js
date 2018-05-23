@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import Content from './../containers/Content';
 import SearchPanel from './header/SearchPanel';
-import ContentArea from './main/ContentArea';
 
 export default class MainPage extends Component {
     render () {
         return (
             <main>
                 <SearchPanel />
-                <ContentArea />
+                <Content />
             </main>
         );
     }
