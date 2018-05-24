@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Content from './../containers/Content';
+import ContentAreaContainer from './../containers/ContentAreaContainer';
 import SearchPanel from './header/SearchPanel';
 
 export default class MainPage extends Component {
@@ -7,7 +7,7 @@ export default class MainPage extends Component {
         return (
             <main>
                 <SearchPanel />
-                <Content />
+                <ContentAreaContainer />
             </main>
         );
     }

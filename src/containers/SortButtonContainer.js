@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setSorting } from './../../actions';
+import { setSorting } from '../actions';
 import PropTypes from 'prop-types';
 
 const SortButton = ({ active, children, onClick }) => (

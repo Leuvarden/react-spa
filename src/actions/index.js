@@ -1,6 +1,29 @@
 import * as constants from './constants';
+import _ from 'lodash';
 
 const url = 'http://react-cdp-api.herokuapp.com/movies';
+
+const findMovies = (movies=[], searchFor='title', searchTerm) => {
+    if (searchTerm) {
+
+        let founded = _.filter(movies, (o) => {
+
+            let target;
+
+            if (_.isArray(o[searchFor])) {
+                target = o[searchFor].join(' ').toLowerCase();
+            } else {
+                target = o[searchFor].toLowerCase();
+            }
+            
+            return _.includes(target, searchTerm.trim().toLowerCase());
+        });
+
+        return [].concat(founded);
+    }
+
+    return movies;
+};
 
 export const selectMovie = (movie) => {
     return {
@@ -9,19 +32,21 @@ export const selectMovie = (movie) => {
     };
 };
 
-export const fetchMovies = () => {
+export const fetchMovies = (criterion, term) => {
     return (dispatch) => {
         return fetch(url)
             .then(response => response.json())
-            .then(response => dispatch(setMoviesToStore(response.data)))
+            .then(response => 
+                dispatch(setMoviesToStore(response.data, criterion, term))
+            )
             .catch(err => console.warn(err));
     };
 };
 
-export const setMoviesToStore = (data) => {
+export const setMoviesToStore = (data, criterion, term) => {
     return {
         type: constants.SET_MOVIES_TO_STORE,
-        data
+        data: findMovies(data, criterion, term)
     };
 };
 

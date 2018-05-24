@@ -29,7 +29,7 @@ ContentItem.propTypes = {
     updateFilmPanel: PropTypes.func,
     title: PropTypes.string,
     img: PropTypes.string,
-    date: PropTypes.string
+    date: PropTypes.any
 };
 
 export default ContentItem;

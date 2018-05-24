@@ -41,7 +41,6 @@ export const searchBy = (state = 'title', action) => {
 };
 
 export const searchTerm = (state='', action) => {
-    // console.log(action)
     switch (action.type) {
     case constants.SEARCH_FOR:
         return action.term;

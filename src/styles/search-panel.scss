@@ -43,17 +43,25 @@
     margin: 0 3px;
     border-radius: 3px;
     border: 2px solid $defaultItemColor;
-  
+    
     &:hover,
     &:active {
     background: $actionItemColor;
     cursor: pointer;
     border: 2px solid yellow;
     }
-  
-    &:hover {
-    background: $actionItemColor;
+
+    &_active {
+      background: $actionItemColor;
+      border: 2px solid $actionItemColor;
+      
+      &:hover,
+      &:focus {
+        cursor: not-allowed;
+        border: 2px solid gray;
+      }
     }
+
   }
   
   &__button-search {
