@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest --watch --coverage",
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "server": "nodemon server.js"

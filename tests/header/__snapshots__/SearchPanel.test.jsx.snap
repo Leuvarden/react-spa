@@ -32,17 +32,19 @@ exports[`SearchPanel renders as expected 1`] = `
         id="filterDescription"
       >
         Search by:
-        <button
-          class="search-panel__button-filter"
-        >
-          Title
-        </button>
-        <button
-          class="search-panel__button-filter"
-        >
-          Genre
-        </button>
       </label>
+      <button
+        class="search-panel__button-filter 
+                    "
+      >
+        title
+      </button>
+      <button
+        class="search-panel__button-filter 
+                    "
+      >
+        genres
+      </button>
       <button
         class="search-panel__button-search"
       >
@@ -62,13 +64,13 @@ exports[`SearchPanel renders as expected 1`] = `
       >
         <label>
           Sort by:
-          <button>
-            release date
-          </button>
-          <button>
-            title
-          </button>
         </label>
+        <button>
+          release date
+        </button>
+        <button>
+          title
+        </button>
       </span>
     </div>
   </div>

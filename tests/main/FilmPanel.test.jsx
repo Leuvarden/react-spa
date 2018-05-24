@@ -1,5 +1,5 @@
 import React from 'react';
-import { FilmPanel } from './../../src/components/main/FilmPanel.js';
+import FilmPanel  from './../../src/components/main/FilmPanel.js';
 
 /* eslint-disable no-undef */
 describe ('FilmPanel', () => {

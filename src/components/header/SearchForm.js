@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
+import uniqueId from 'lodash/uniqueId';
 
 class SearchForm extends Component {
     render () {
@@ -55,7 +56,7 @@ class SearchForm extends Component {
 
         return searches.map((el) => 
             <button
-                key={el}
+                key={uniqueId(el)}
                 className={
                     `search-panel__button-filter 
                     ${ el === this.props.searchBy ? 'search-panel__button-filter_active' : ''}`

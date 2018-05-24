@@ -1,4 +1,4 @@
-import { orderBy } from 'lodash';
+import orderBy from 'lodash/orderBy';
 import { connect } from 'react-redux';
 import { selectMovie, fetchMovies } from './../actions';
 import ContentArea from './../components/main/ContentArea';

@@ -1,22 +1,24 @@
 import * as constants from './constants';
-import _ from 'lodash';
+import _filter from 'lodash/filter';
+import _includes from 'lodash/includes';
+import _isArray from 'lodash/isArray';
 
 const url = 'http://react-cdp-api.herokuapp.com/movies';
 
 const findMovies = (movies=[], searchFor='title', searchTerm) => {
     if (searchTerm) {
 
-        let founded = _.filter(movies, (o) => {
+        let founded = _filter(movies, (o) => {
 
             let target;
 
-            if (_.isArray(o[searchFor])) {
+            if (_isArray(o[searchFor])) {
                 target = o[searchFor].join(' ').toLowerCase();
             } else {
                 target = o[searchFor].toLowerCase();
             }
             
-            return _.includes(target, searchTerm.trim().toLowerCase());
+            return _includes(target, searchTerm.trim().toLowerCase());
         });
 
         return [].concat(founded);
@@ -39,7 +41,9 @@ export const fetchMovies = (criterion, term) => {
             .then(response => 
                 dispatch(setMoviesToStore(response.data, criterion, term))
             )
-            .catch(err => console.warn(err));
+            .catch(() => {
+                dispatch(setMoviesToStore([]));
+            });
     };
 };
 

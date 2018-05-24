@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentArea } from './../../src/components/main/ContentArea.js';
+import ContentArea  from './../../src/components/main/ContentArea.js';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 

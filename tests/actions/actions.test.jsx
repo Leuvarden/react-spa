@@ -3,7 +3,6 @@ import response from './../movies';
 import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
-
 /* eslint-disable no-undef */
 
 describe('actions', () => {
@@ -20,18 +19,6 @@ describe('actions', () => {
         };
 
         expect(actions.selectMovie(movie)).toEqual(expectedAction);
-
-    });
-
-    it('should create an action to set movies to store', () => {
-        const data = response.data;
-
-        const expectedAction = {
-            type: 'SET_MOVIES_TO_STORE',
-            data: data
-        };
-
-        expect(actions.setMoviesToStore(data)).toEqual(expectedAction);
 
     });
 
@@ -72,6 +59,68 @@ describe('async actions', () => {
         return store.dispatch(actions.fetchMovies()).then(() => {
             expect(store.getActions()).toEqual(expectedAction);
         });
+    });
+
+    it('returns empty array if fetch fails', () => {
+        window.fetch = jest.fn().mockImplementation(() =>
+            Promise.reject()
+        );
+
+        const expectedAction = [{
+            type: 'SET_MOVIES_TO_STORE',
+            data: []
+        }];
+
+        const store = mockStore({ movies : []});
+
+        return store.dispatch(actions.fetchMovies()).then(() => {
+            expect(store.getActions()).toEqual(expectedAction);
+        });
+    });
+});
+
+describe('setting movies to store with search criteria', () => {
+    const data = response.data;
+
+    it('should return all fetched movies if no search term were added', () => {
+        const expectedAction = {
+            type: 'SET_MOVIES_TO_STORE',
+            data: data
+        };
+
+        expect(actions.setMoviesToStore(data)).toEqual(expectedAction);
+    });
+
+    it('should return fetched movies with needed title', () => {
+        const searchTerm = 'untitled avengers';
+
+        const expectedAction = {
+            type: 'SET_MOVIES_TO_STORE',
+            data: [].concat(data[1])
+        };
+
+        expect(actions.setMoviesToStore(data, 'title', searchTerm)).toEqual(expectedAction);
+    });
+
+    it('should return fetched movies with needed genres', () => {
+        const searchTerm = 'science fiction';
+
+        const expectedAction = {
+            type: 'SET_MOVIES_TO_STORE',
+            data: [].concat(data[1], data[2])
+        };
+
+        expect(actions.setMoviesToStore(data, 'genres', searchTerm)).toEqual(expectedAction);
+    });
+
+    it('should return empty array if nothing was passed', () => {
+
+        const expectedAction = {
+            type: 'SET_MOVIES_TO_STORE',
+            data: []
+        };
+
+        expect(actions.setMoviesToStore()).toEqual(expectedAction);
     });
 });
 

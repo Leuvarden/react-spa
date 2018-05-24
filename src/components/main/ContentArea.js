@@ -1,3 +1,4 @@
+import uniqueId from 'lodash/uniqueId';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -24,10 +25,10 @@ class ContentArea extends Component {
         if (this.props.movies && movies[0]) {
             return movies.map((el) => 
                 <ErrorBoundary 
-                    key={el.id} 
+                    key={uniqueId(el.id)} 
                     showOnError={ContentErrorItem()}>                 
                     <ContentItem
-                        key={el.id} 
+                        key={uniqueId(el.id)} 
                         genres={el.genres} 
                         img={el.poster_path}
                         date={el.release_date} 
