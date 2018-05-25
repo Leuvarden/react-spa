@@ -1,12 +1,18 @@
-import {setMoviesToStore} from './../actions';
+import { setMoviesToStore } from './../actions';
 
 const url = 'http://react-cdp-api.herokuapp.com/movies';
 
-export const fetchMovies = () => {
+const fetchMovies = (criterion, term) => {
     return (dispatch) => {
         return fetch(url)
             .then(response => response.json())
-            .then(response => dispatch(setMoviesToStore(response.data)))
-            .catch(err => console.warn(err));
+            .then(response => 
+                dispatch(setMoviesToStore(response.data, criterion, term))
+            )
+            .catch(() => {
+                dispatch(setMoviesToStore([]));
+            });
     };
 };
+
+export default fetchMovies;

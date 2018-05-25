@@ -22,7 +22,8 @@
     overflow: hidden;
   
     &_img {
-      width: 100%;
+      width: 100%;    
+      cursor: pointer;
     }
   
     &__description {
@@ -39,6 +40,7 @@
       white-space: nowrap;
       width: 75%;
       overflow: hidden;
+      cursor: pointer;
     }
   
     &_genre {

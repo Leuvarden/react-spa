@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { setSearchCriterion, setSearchTerm, fetchMovies } from '../actions';
+import { setSearchCriterion, setSearchTerm } from '../actions';
+import fetchMovies  from './../thunks/FetchMovies';
 import SearchForm from '../components/header/SearchForm';
 
 
