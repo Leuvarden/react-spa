@@ -8,12 +8,16 @@ import FilmPanel from './../../containers/FilmPanelContainer';
 import ContentItem from './ContentItem';
 import ContentErrorItem from './ContentErrorItem';
 import './../../styles/content-area.scss';
+// import { NavLink } from 'react-router-dom';
+import ContentLink from './../../containers/ContentLink';
 
 class ContentArea extends Component {
     render() {   
         return (
-            <section className='content-container'>
-                <FilmPanel /> 
+            <section 
+            // className='content-container'
+            >
+                {/* <FilmPanel />  */}
                 {this.getContent()}
             </section>
         );
@@ -23,25 +27,31 @@ class ContentArea extends Component {
         let movies = this.props.movies;
 
         if (this.props.movies && movies[0]) {
-            return movies.map((el) => 
-                <ErrorBoundary 
-                    key={uniqueId(el.id)} 
-                    showOnError={ContentErrorItem()}>                 
-                    <ContentItem
-                        key={uniqueId(el.id)} 
-                        genres={el.genres} 
-                        img={el.poster_path}
-                        date={el.release_date} 
-                        title={el.title} 
-                        overview={el.overview}
-                        updateFilmPanel={() => {
-                            this.props.selectMovie(el);
-                            document.body.scrollTop = 0;
-                            document.documentElement.scrollTop = 0;
-                        }}
-                    />
-                </ErrorBoundary>
+            return movies.map((el) =>
+                <div key={el.id}> 
+                    <ContentLink id={el.id}>{el.title}</ContentLink>
+                </div>
             );
+
+            // return movies.map((el) => 
+            //     <ErrorBoundary 
+            //         key={uniqueId(el.id)} 
+            //         showOnError={ContentErrorItem()}>                 
+            //         <ContentItem
+            //             key={uniqueId(el.id)} 
+            //             genres={el.genres} 
+            //             img={el.poster_path}
+            //             date={el.release_date} 
+            //             title={el.title} 
+            //             overview={el.overview}
+            //             updateFilmPanel={() => {
+            //                 this.props.selectMovie(el);
+            //                 document.body.scrollTop = 0;
+            //                 document.documentElement.scrollTop = 0;
+            //             }}
+            //         />
+            //     </ErrorBoundary>
+            // );
         } else {
             return <EmptyContent />;
         }

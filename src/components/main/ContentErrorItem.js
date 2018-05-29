@@ -1,12 +1,13 @@
 import React from 'react';
 
-const ContentErrorItem = () => {
+const ContentErrorItem = ({ match: { params } }) => {
+    console.log(params)
     return (
         <figure className="content-item">
-            <img src='./../../public/img/cube.gif' className="content-item_img" />
+
             <figcaption className="content-item__description">
                 <span className="content-item_title">
-                    <b>Loading...</b>
+                   Uhm
                 </span>
             </figcaption>
         </figure>

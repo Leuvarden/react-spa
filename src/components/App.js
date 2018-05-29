@@ -9,7 +9,8 @@ class App extends Component {
         return (
             <div>
                 <ErrorBoundary showOnError={<h1>Something went wrong</h1>}>
-                    <MainPage />
+                    {/* <MainPage /> */}
+                    {this.props.children}
                 </ErrorBoundary>
                 <Footer />
             </div>

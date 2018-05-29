@@ -12,7 +12,7 @@ const findMovies = (movies=[], searchFor='title', searchTerm) => {
             if (_isArray(o[searchFor])) {
                 target = o[searchFor].join(' ').toLowerCase();
             } else {
-                target = o[searchFor].toLowerCase();
+                target = o[searchFor].toString().toLowerCase();
             }
             
             return _includes(target, searchTerm.trim().toLowerCase());
