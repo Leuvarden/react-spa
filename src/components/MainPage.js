@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ContentAreaContainer from './../containers/ContentAreaContainer';
 import SearchPanel from './header/SearchPanel';
 
-export default class MainPage extends Component {
-    render () {
-        return (
-            <main>
-                <SearchPanel />
-                <ContentAreaContainer />
-            </main>
-        );
-    }
-}
+const MainPage = ({location}) => {
+    // const params = new URLSearchParams(location.search);
+    // console.log(params.get('search'));
+    return (
+        <main>
+            <SearchPanel />
+            <ContentAreaContainer />
+        </main>
+    );
+};
+
+export default MainPage;

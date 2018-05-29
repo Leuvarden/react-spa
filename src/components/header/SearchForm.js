@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash/uniqueId';
+import SearchButton from './SearchButton';
 
 class SearchForm extends Component {
     render () {
@@ -14,7 +15,9 @@ class SearchForm extends Component {
                 <div className="search-panel__filter">
                     <label id="filterDescription">Search by:</label>
                     {this.getFilterButtons()}
-                    {this.getSearchButton()}
+                    {/* {this.getSearchButton()} */}
+                    <br />
+                    <SearchButton />
                 </div>
             </Fragment>
         );

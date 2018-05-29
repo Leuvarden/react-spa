@@ -1,35 +1,31 @@
 import React from 'react';
 import App from './components/App';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import EmptyContent from './components/main/EmptyContent';
-// import ContentErrorItem from './components/main/ContentErrorItem';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import MainPage from './components/MainPage';
-import ContentArea from './components/main/ContentArea';
+import NotFound from './components/main/NotFound';
 import FilmPageContainer from './containers/FilmPageContainer';
 import ContentAreaContainer from './containers/ContentAreaContainer';
-
-
 
 const Routes = ({ store }) => (
     <Provider store={store}>
         <Router>
             <Switch>
                 <App>
-                    <Route exact path="/" component={MainPage} />
-
-                    <Route path="/film">
+                    <Route exact path="/" component={(args) => <MainPage {...args} />} />
+  
+                    <Route path="/films">
                         <Switch>
-                            <Route exact path="/film" component={ContentAreaContainer} />
-                            <Route path="/film/:id" component={FilmPageContainer} />
+                            <Route exact path="/films" component={ContentAreaContainer} />
+                            <Route path="/films/:id" component={FilmPageContainer} />
                         </Switch>
                     </Route>
 
-                    {/* <Route path='/about' component={App} />
-
-<Route path='/film/:id' component={App} /> */}
+                    <Route exact path="/search(/)" component={(args) => <MainPage {...args} />} />
                 </App>
+
+                <Route path="*" component={NotFound} />
             </Switch>
         </Router>
     </Provider>

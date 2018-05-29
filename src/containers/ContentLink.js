@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const ContentLink = ({ id, children }) => (
-    <NavLink to={`/film/${id}`} >
+    <NavLink to={`/films/${id}`} >
         {children}
     </NavLink>
 );
