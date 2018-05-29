@@ -4,54 +4,35 @@ import React, { Component } from 'react';
 
 import ErrorBoundary from './../Error.js';
 import EmptyContent from './EmptyContent';
-import FilmPanel from './../../containers/FilmPanelContainer';
 import ContentItem from './ContentItem';
 import ContentErrorItem from './ContentErrorItem';
 import './../../styles/content-area.scss';
-// import { NavLink } from 'react-router-dom';
-import ContentLink from './../../containers/ContentLink';
 
 class ContentArea extends Component {
     render() {   
         return (
-            <section 
-            // className='content-container'
-            >
-                {/* <FilmPanel />  */}
+            <section className='content-container'>
                 {this.getContent()}
             </section>
         );
     }
     
     getContent() {
-        let movies = this.props.movies;
+        if (this.props.movies && this.props.movies[0]) {
 
-        if (this.props.movies && movies[0]) {
-            return movies.map((el) =>
-                <div key={el.id}> 
-                    <ContentLink id={el.id}>{el.title}</ContentLink>
-                </div>
+            return this.props.movies.map((el) => 
+                <ErrorBoundary 
+                    key={uniqueId(el.id)} 
+                    showOnError={ContentErrorItem()}>                 
+                    <ContentItem
+                        id={el.id} 
+                        genres={el.genres} 
+                        img={el.poster_path}
+                        date={el.release_date} 
+                        title={el.title} 
+                    />
+                </ErrorBoundary>
             );
-
-            // return movies.map((el) => 
-            //     <ErrorBoundary 
-            //         key={uniqueId(el.id)} 
-            //         showOnError={ContentErrorItem()}>                 
-            //         <ContentItem
-            //             key={uniqueId(el.id)} 
-            //             genres={el.genres} 
-            //             img={el.poster_path}
-            //             date={el.release_date} 
-            //             title={el.title} 
-            //             overview={el.overview}
-            //             updateFilmPanel={() => {
-            //                 this.props.selectMovie(el);
-            //                 document.body.scrollTop = 0;
-            //                 document.documentElement.scrollTop = 0;
-            //             }}
-            //         />
-            //     </ErrorBoundary>
-            // );
         } else {
             return <EmptyContent />;
         }
@@ -63,8 +44,5 @@ export default ContentArea;
 ContentArea.propTypes = {
     movies: PropTypes.arrayOf(
         PropTypes.object
-    ),
-    selectMovie: PropTypes.func,
-    fetchMovies: PropTypes.func,
-    sortBy: PropTypes.string,
+    )
 };

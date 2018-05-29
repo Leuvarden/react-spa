@@ -16,20 +16,20 @@ const Routes = ({ store }) => (
     <Provider store={store}>
         <Router>
             <Switch>
-            <Route exact path="/" component={MainPage} />
+                <App>
+                    <Route exact path="/" component={MainPage} />
 
-                <Route path="/film">
-                    <App>
+                    <Route path="/film">
                         <Switch>
                             <Route exact path="/film" component={ContentAreaContainer} />
                             <Route path="/film/:id" component={FilmPageContainer} />
                         </Switch>
-                    </App>
-                </Route>
+                    </Route>
 
-                {/* <Route path='/about' component={App} />
+                    {/* <Route path='/about' component={App} />
 
-                <Route path='/film/:id' component={App} /> */}
+<Route path='/film/:id' component={App} /> */}
+                </App>
             </Switch>
         </Router>
     </Provider>

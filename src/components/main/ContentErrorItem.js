@@ -1,7 +1,6 @@
 import React from 'react';
 
-const ContentErrorItem = ({ match: { params } }) => {
-    console.log(params)
+const ContentErrorItem = () => {
     return (
         <figure className="content-item">
 

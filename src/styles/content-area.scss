@@ -41,6 +41,12 @@
       width: 75%;
       overflow: hidden;
       cursor: pointer;
+      margin: 0;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
     }
   
     &_genre {

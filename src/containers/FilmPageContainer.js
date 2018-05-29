@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import findMovies from './../actions/findMovies';
 import { connect } from 'react-redux';
 import { FilmPanel } from '../components/main/FilmPanel';
 import { NavLink } from 'react-router-dom';
 import ContentArea from '../components/main/ContentArea';
+import Logo from './../components/main/Logo';
+import './../styles/search-panel.scss';
 
 let mapStateToProps = (state, ownProps) => {
     let id = ownProps.match.params.id || '0';
@@ -11,36 +13,22 @@ let mapStateToProps = (state, ownProps) => {
 
     return {
         activeMovie: movie,
-        sameGenreMovies: findMovies(state.data.data, 'genres', movie.genres[0])
+        sameGenreMovies: findMovies(state.data.data, 'genres', movie.genres[0]) //todo: delete active movie
     };
 };
 
 const FilmPageContainer = ({activeMovie, sameGenreMovies}) => {
-    console.log(sameGenreMovies);
     return (
-        <Fragment>
-            <NavLink to="/">Home</NavLink>
+        <div>
+            <Logo />
+            <NavLink to="/" className="search-panel__button-search">Search</NavLink>
             <FilmPanel movie={activeMovie} />
-            <div>Films by {activeMovie.genres[0]} genre</div>
+            <div className="search-panel__sorting">
+                <span>Films by {activeMovie.genres[0]} genre</span>
+            </div>
             <ContentArea movies={sameGenreMovies} />
-        </Fragment>
+        </div>
     );
 };
-
-// function getSameGenres() {
-//     if (this.props.sameGenreMovies && this.props.sameGenreMovies[0]) {
-//         return this.props.sameGenreMovies.map((el) => 
-//             <div key={el.id}>
-//                 <Link 
-//                     to={`/film/${el.id}`} 
-                    
-//                     onClick={() => this.props.selectMovie(this.props.movies, el.id)} 
-//                 >
-//                     {el.title} - {el.id}
-//                 </Link>
-//             </div>
-//         );
-//     }
-// }
 
 export default connect(mapStateToProps)(FilmPageContainer);
