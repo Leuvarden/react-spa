@@ -16,4 +16,10 @@ body {
 footer {
   height: 70px;
   display: flex;
+  justify-content: center;
+
+  .footer-container {
+    flex: 0 1 80%;
+    margin: 10px 0;
+  }
 }

@@ -2,30 +2,29 @@
 
 exports[`ContentItem renders as expected 1`] = `
 <figure
-  className="content-item"
-  onClick={[Function]}
+  class="content-item"
 >
   <img
-    className="content-item_img"
+    class="content-item_img"
     src="poster_path"
   />
   <figcaption
-    className="content-item__description"
+    class="content-item__description"
   >
     <span
-      className="content-item_year"
+      class="content-item_year"
     >
       2014
     </span>
     <span
-      className="content-item_title"
+      class="content-item_title"
     >
       <b>
         Pulp Fiction
       </b>
     </span>
     <span
-      className="content-item_genre"
+      class="content-item_genre"
     >
       Adventure & Science
     </span>

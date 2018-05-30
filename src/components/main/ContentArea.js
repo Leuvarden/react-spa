@@ -1,87 +1,60 @@
+import uniqueId from 'lodash/uniqueId';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import ContentItem from './ContentItem';
-import EmptyContent from './EmptyContent';
-import FilmPanel from './FilmPanel';
+
 import ErrorBoundary from './../Error.js';
-import FetchItems from './FetchItems';
+import EmptyContent from './EmptyContent';
+import FilmPanel from './../../containers/FilmPanelContainer';
+import ContentItem from './ContentItem';
+import ContentErrorItem from './ContentErrorItem';
 import './../../styles/content-area.scss';
 
-export default class ContentArea extends Component {
-    constructor(props) {
-        super(props);
-        this.url = 'http://react-cdp-api.herokuapp.com/';
-
-        this.state = {
-            contentData: []
-        };
-
-        this.updateFilmPanel = this.updateFilmPanel.bind(this);
+class ContentArea extends Component {
+    render() {   
+        return (
+            <section className='content-container'>
+                <FilmPanel /> 
+                {this.getContent()}
+            </section>
+        );
     }
+    
+    getContent() {
+        let movies = this.props.movies;
 
-    getContent () {
-        if (this.state.contentData.length) {
-            const items = (this.state.contentData).map((el) => 
-                <ErrorBoundary key={el.id} showOnError={this.getErrorDiv()}>                 
+        if (this.props.movies && movies[0]) {
+            return movies.map((el) => 
+                <ErrorBoundary 
+                    key={uniqueId(el.id)} 
+                    showOnError={ContentErrorItem()}>                 
                     <ContentItem
-                        key={el.id} 
+                        key={uniqueId(el.id)} 
                         genres={el.genres} 
                         img={el.poster_path}
                         date={el.release_date} 
                         title={el.title} 
                         overview={el.overview}
-                        updateFilmPanel={this.updateFilmPanel}
+                        updateFilmPanel={() => {
+                            this.props.selectMovie(el);
+                            document.body.scrollTop = 0;
+                            document.documentElement.scrollTop = 0;
+                        }}
                     />
                 </ErrorBoundary>
             );
-            return items;
         } else {
             return <EmptyContent />;
         }
     }
-
-    getPanel() {
-        if (!this.state.currentItem) {
-            return;
-        } else {
-            let item = this.state.currentItem;
-            return <FilmPanel 
-                img={item.img}
-                title={item.title}
-                genres={item.genres}
-                overview={item.overview} 
-                date={item.date}
-            />;
-        }
-    }
-
-    render() {   
-        // console.log(this.state); 
-        return (
-            <section className='content-container'>
-                {this.getPanel()}
-                {this.getContent()}
-            </section>
-        );
-    }
-
-    componentDidMount() {
-        FetchItems(`${this.url}movies`)
-            .then(response => this.setState({contentData: response.data }) )
-            .catch(err => console.warn('Request Failed' + err)); //eslint-disable-line 
-    }
-
-    updateFilmPanel(filmProps) {
-        this.setState({currentItem: filmProps});
-    }
-
-    getErrorDiv() {
-        return (
-            <figure className="content-item">
-                <img src='./../../public/img/cube.gif' className="content-item_img"></img>
-                <figcaption className="content-item__description">
-                    <span className="content-item_title"><b>Loading...</b></span>
-                </figcaption>
-            </figure>
-        );
-    }
 }
+
+export default ContentArea;
+
+ContentArea.propTypes = {
+    movies: PropTypes.arrayOf(
+        PropTypes.object
+    ),
+    selectMovie: PropTypes.func,
+    fetchMovies: PropTypes.func,
+    sortBy: PropTypes.string,
+};

@@ -5,7 +5,7 @@ import EmptyContent from './../../src/components/main/EmptyContent.js';
 describe ('EmptyContent', () => {
 
     it('renders as expected', () => {
-        const empty = shallow(<EmptyContent />);
+        const empty = render(<EmptyContent />);
     
         expect(empty).toMatchSnapshot();
     });

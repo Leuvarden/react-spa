@@ -1,17 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchForm renders as expected 1`] = `
-<div
-  className="search-panel__form"
->
-  <label
-    htmlFor="searchPanelInput"
+<React.Fragment>
+  <div
+    className="search-panel__form"
   >
-    Find your movie
-  </label>
-  <input
-    id="searchPanelInput"
-    type="text"
-  />
-</div>
+    <label
+      htmlFor="searchPanelInput"
+    >
+      Find your movie
+    </label>
+    <input
+      id="searchPanelInput"
+      onKeyDown={[Function]}
+      type="text"
+    />
+  </div>
+  <div
+    className="search-panel__filter"
+  >
+    <label
+      id="filterDescription"
+    >
+      Search by:
+    </label>
+    <button
+      className="search-panel__button-filter 
+                    "
+      key="title1"
+      onClick={[Function]}
+    >
+      title
+    </button>
+    <button
+      className="search-panel__button-filter 
+                    "
+      key="genres2"
+      onClick={[Function]}
+    >
+      genres
+    </button>
+    <button
+      className="search-panel__button-search"
+      onClick={[Function]}
+    >
+      Search
+    </button>
+  </div>
+</React.Fragment>
 `;

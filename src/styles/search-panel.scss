@@ -43,17 +43,25 @@
     margin: 0 3px;
     border-radius: 3px;
     border: 2px solid $defaultItemColor;
-  
+    
     &:hover,
     &:active {
     background: $actionItemColor;
     cursor: pointer;
     border: 2px solid yellow;
     }
-  
-    &:hover {
-    background: $actionItemColor;
+
+    &_active {
+      background: $actionItemColor;
+      border: 2px solid $actionItemColor;
+      
+      &:hover,
+      &:focus {
+        cursor: not-allowed;
+        border: 2px solid gray;
+      }
     }
+
   }
   
   &__button-search {
@@ -69,6 +77,31 @@
   
     &:focus {
     border: 2px solid yellow;
+    }
+  }
+
+  &__sorting {
+    text-transform: capitalize;
+    padding: 10px 0;
+
+    .sorting__buttons {
+      float: right;
+
+      button {
+        background-color: transparent;
+        border: none;
+        color: $actionItemColor;
+        margin-left: 5px;
+
+        &:disabled {
+          color: $defaultItemColor;
+        }
+
+        &:focus,
+        &:hover {
+          background-color: $themeColor-Light;
+        }
+      }
     }
   }
   }

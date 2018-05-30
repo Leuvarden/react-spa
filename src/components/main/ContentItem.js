@@ -5,7 +5,6 @@ class ContentItem extends Component {
 
     render () {
         const props = this.props;
-
         return (
             <figure className="content-item" onClick={() => props.updateFilmPanel(props)}>
                 <img src={props.img} className="content-item_img"></img>
@@ -30,7 +29,7 @@ ContentItem.propTypes = {
     updateFilmPanel: PropTypes.func,
     title: PropTypes.string,
     img: PropTypes.string,
-    date: PropTypes.string
+    date: PropTypes.any
 };
 
 export default ContentItem;

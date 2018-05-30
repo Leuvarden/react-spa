@@ -2,34 +2,34 @@
 
 exports[`FilmPanel renders as expected 1`] = `
 <section
-  className="film-panel"
+  class="film-panel"
 >
   <figure>
     <div
-      className="film-panel_poster"
+      class="film-panel_poster"
     >
       <img
         src="poster_path"
       />
     </div>
     <figcaption
-      className="film-panel_description"
+      class="film-panel_description"
     >
       <h1>
         Pulp Fiction
       </h1>
       <p
-        className="film-panel_category"
+        class="film-panel_category"
       >
         Adventure
       </p>
       <p
-        className="film-panel_year"
+        class="film-panel_year"
       >
         2014
       </p>
       <p
-        className="film-panel_overview"
+        class="film-panel_overview"
       >
         Lorem ipsum dolem sit amet
       </p>

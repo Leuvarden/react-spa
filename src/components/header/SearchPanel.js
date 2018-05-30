@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Logo from './../main/Logo';
-import SearchForm from './SearchForm';
-import SearchFilter from './SearchFilter';
+import SearchFormContainer from './../../containers/SearchFormContainer';
+import SortPanelContainer from '../../containers/SortPanelContainer';
 import './../../styles/search-panel.scss';
 
 class SearchPanel extends Component {
@@ -10,8 +10,8 @@ class SearchPanel extends Component {
             <section className="search-panel">
                 <div className="search-panel__container">
                     <Logo />
-                    <SearchForm />
-                    <SearchFilter />
+                    <SearchFormContainer />
+                    <SortPanelContainer />
                 </div>
             </section>
         );

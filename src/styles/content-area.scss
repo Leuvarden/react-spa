@@ -1,7 +1,8 @@
 @import 'colors';
 
 .content-container {
-    flex: 5 1 auto;
+    margin: 0 10%;
+    min-height: 400px;
     background: white;
     color: black;
     display: flex;

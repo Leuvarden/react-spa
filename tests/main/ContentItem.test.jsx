@@ -13,7 +13,7 @@ describe ('ContentItem', () => {
     };
 
     it('renders as expected', () => {
-        const item = shallow(
+        const item = render(
             <ContentItem {...defaultProps}/>
         );
     

@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SearchButton renders as expected 1`] = `
-<button
-  className="search-panel__button-search"
->
-  Search
-</button>
-`;

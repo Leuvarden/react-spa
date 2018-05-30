@@ -32,22 +32,46 @@ exports[`SearchPanel renders as expected 1`] = `
         id="filterDescription"
       >
         Search by:
-        <button
-          class="search-panel__button-filter"
-        >
-          Title
-        </button>
-        <button
-          class="search-panel__button-filter"
-        >
-          Genre
-        </button>
       </label>
+      <button
+        class="search-panel__button-filter 
+                    "
+      >
+        title
+      </button>
+      <button
+        class="search-panel__button-filter 
+                    "
+      >
+        genres
+      </button>
       <button
         class="search-panel__button-search"
       >
         Search
       </button>
+    </div>
+    <div
+      class="search-panel__sorting"
+    >
+      <span
+        class="movies-count"
+      >
+        0 movies found
+      </span>
+      <span
+        class="sorting__buttons"
+      >
+        <label>
+          Sort by:
+        </label>
+        <button>
+          release date
+        </button>
+        <button>
+          title
+        </button>
+      </span>
     </div>
   </div>
 </section>
