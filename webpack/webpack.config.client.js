@@ -13,6 +13,15 @@ module.exports = merge(common, {
         './src/client.js'
     ].filter(Boolean),
 
+    module: {
+        rules: [
+            {
+                test: /\.(s*)css$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'] 
+            }
+        ],
+    },
+
     plugins: [
         isDev && new webpack.HotModuleReplacementPlugin()
     ].filter(Boolean)

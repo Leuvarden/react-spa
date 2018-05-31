@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const isDev = (process.env.NODE_ENV === 'development');
 
@@ -24,19 +24,11 @@ module.exports = {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
-            },
-            {
-                test: /\.(s*)css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: 'css-loader!sass-loader'
-                })
             }
         ]
     },
 
     plugins: [
-        new ExtractTextPlugin('main.css'),
         isDev? new webpack.NamedModulesPlugin() : new webpack.HashedModulesPlugin()
     ],
 
