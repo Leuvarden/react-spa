@@ -1,9 +1,16 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
-import store from './store';
+// import store from './store';
 import Routes from './Routes';
+import { BrowserRouter } from 'react-router-dom';
+import configureStore from './configureStore';
 
-const root = <Routes store={store} />;
+const store = configureStore(window.PRELOADED_STATE);
+
+const root = <Routes 
+    Router={BrowserRouter}
+    store={store} 
+/>;
 
 hydrate(
     root,

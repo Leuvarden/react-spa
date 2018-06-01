@@ -15,9 +15,9 @@ class SearchForm extends Component {
                 <div className="search-panel__filter">
                     <label id="filterDescription">Search by:</label>
                     {this.getFilterButtons()}
-                    {/* {this.getSearchButton()} */}
+                    {this.getSearchButton()}
                     <br />
-                    <SearchButton />
+                    {/* <SearchButton /> */}
                 </div>
             </Fragment>
         );
