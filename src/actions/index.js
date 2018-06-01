@@ -26,7 +26,7 @@ export const setSearchCriterion = criterion => ({
 });
 
 export const setSearchTerm = term => {
-    console.log(term);
+    // console.log(term);
     return {
         type: constants.SEARCH_FOR,
         term

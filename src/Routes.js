@@ -32,7 +32,8 @@ const Routes = ({ Router, location, context, store }) => (
     </Provider>
 );
 
-export default hot(module)(Routes);
+// export default hot(module)(Routes);
+export default Routes;
 
 Routes.propTypes = {
     store: PropTypes.object.isRequired,

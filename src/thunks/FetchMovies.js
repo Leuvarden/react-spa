@@ -3,6 +3,7 @@ import { setMoviesToStore } from './../actions';
 const url = 'http://react-cdp-api.herokuapp.com/movies';
 
 const fetchMovies = (criterion, term) => {
+    console.log(criterion)
     return (dispatch) => {
         return fetch(url)
             .then(response => response.json())

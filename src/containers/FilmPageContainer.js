@@ -13,7 +13,7 @@ let mapStateToProps = (state, ownProps) => {
 
     return {
         activeMovie: movie,
-        sameGenreMovies: findMovies(state.data.data, 'genres', movie.genres[0]) //todo: delete active movie
+        sameGenreMovies: findMovies(state.data.data, 'genres', movie.genres[0]) 
     };
 };
 
@@ -21,12 +21,16 @@ const FilmPageContainer = ({activeMovie, sameGenreMovies}) => {
     return (
         <div>
             <Logo />
+
             <NavLink to="/" className="search-panel__button-search">Search</NavLink>
+
             <FilmPanel movie={activeMovie} />
+
             <div className="search-panel__sorting">
                 <span>Films by {activeMovie.genres[0]} genre</span>
             </div>
-            <ContentArea movies={sameGenreMovies} />
+
+            <ContentArea movies={sameGenreMovies} activeMovie={activeMovie} />
         </div>
     );
 };
