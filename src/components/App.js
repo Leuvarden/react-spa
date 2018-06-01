@@ -4,10 +4,10 @@ import Logo from './common/Logo';
 import ErrorBoundary from './common/Error';
 import './../styles/body.scss';
 
-const App = ({children}) => {
+const App = ({children, location}) => {
     return (
         <div>
-            <Logo path={location.pathname} />
+            { location && <Logo path={location.pathname} />}
             <ErrorBoundary showOnError={<h1>Something went wrong</h1>}>
                 {children}
             </ErrorBoundary>
@@ -19,5 +19,6 @@ const App = ({children}) => {
 export default App;
 
 App.propTypes = {
-    children: PropTypes.any
+    children: PropTypes.any,
+    location: PropTypes.any
 };

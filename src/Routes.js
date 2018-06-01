@@ -7,7 +7,6 @@ import MainPage from './components/MainPage';
 import NotFound from './components/common/NotFound';
 import FilmPageContainer from './containers/FilmPageContainer';
 import ContentAreaContainer from './containers/ContentAreaContainer';
-// import { hot } from 'react-hot-loader';
 
 const Routes = ({ Router, location, context, store }) => (
     <Provider store={store}>
@@ -30,7 +29,6 @@ const Routes = ({ Router, location, context, store }) => (
     </Provider>
 );
 
-// export default hot(module)(Routes);
 export default Routes;
 
 Routes.propTypes = {
