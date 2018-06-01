@@ -6,15 +6,11 @@ import fetchMovies  from './../thunks/FetchMovies';
 
 const sortMovies = (movies=[], sortBy='title') => orderBy(movies, [sortBy], 'asc');
 
-let mapStateToProps = (state, ownProps) => {
-    // const params = new URLSearchParams(ownProps.location.search);
-
+let mapStateToProps = (state) => {
     return {
         movies: sortMovies(state.data.data, state.sortBy),
         activeMovie: state.activeMovie,
-        // searchQuery: params.get('query'),
-        // searchBy: params.get('searchBy'),
-        // searchTermFromButton: state.searchTerm
+        searchTerm: state.searchTerm
     };
 };
 

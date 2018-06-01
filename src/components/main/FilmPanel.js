@@ -5,11 +5,12 @@ import './../../styles/film-panel.scss';
 export class FilmPanel extends Component {
     render () {
         return this.props.movie && (
-            <section className="film-panel">
-                <figure>
+            <section className="film-panel__container">
+                <figure  className="film-panel__figure">
                     {this.getPoster()}
                     {this.getCaption()}
                 </figure>
+                {this.getSameGenres()}
             </section>
         );
     }
@@ -38,15 +39,15 @@ export class FilmPanel extends Component {
             </div>
         );
     }
+
+    getSameGenres() {
+        return (
+            <div className="film-panel__figure film-panel__sorting">
+                <span>Films by {this.props.movie.genres[0]} genre</span>
+            </div>
+        );
+    }
 }
-
-// let mapPropsToStore = (state) => ({
-//     movie: state.activeMovie,
-// });
-
-// export default connect(
-//     mapPropsToStore, 
-// )(FilmPanel);
 
 export default FilmPanel;
 

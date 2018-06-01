@@ -1,10 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { setSearchTerm, setSearchCriterion } from '../../actions';
+import { setSearchTerm } from '../../actions';
 import fetchMovies  from './../../thunks/FetchMovies';
+import PropTypes from 'prop-types';
 
-const SearchButton = ({updateResults, setSearchQuery, searchQuery, searchBy}) => {
+const SearchButton = ({ setSearchQuery, searchBy }) => {
     
     return (
         <button 
@@ -45,3 +46,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default withRouter(
     connect(mapStateToProps, mapDispatchToProps)(SearchButton)
 );
+
+SearchButton.propTypes = {
+    searchBy: PropTypes.string,
+    setSearchQuery: PropTypes.func,
+};

@@ -4,10 +4,10 @@ import { Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import MainPage from './components/MainPage';
-import NotFound from './components/main/NotFound';
+import NotFound from './components/common/NotFound';
 import FilmPageContainer from './containers/FilmPageContainer';
 import ContentAreaContainer from './containers/ContentAreaContainer';
-import { hot } from 'react-hot-loader';
+// import { hot } from 'react-hot-loader';
 
 const Routes = ({ Router, location, context, store }) => (
     <Provider store={store}>
@@ -22,8 +22,6 @@ const Routes = ({ Router, location, context, store }) => (
                             <Route path="/films/:id" component={FilmPageContainer} />
                         </Switch>
                     </Route>
-
-                    <Route exact path="/search(/)" component={(args) => <MainPage {...args} />} />
                 </App>
 
                 <Route path="*" component={NotFound} />

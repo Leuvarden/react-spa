@@ -15,7 +15,7 @@ class ErrorBoundary extends Component {
         if (this.state.hasError) {
             return this.props.showOnError || null;
         }
-        return this.props.children;
+        return this.props.children || null;
     }
 }
 

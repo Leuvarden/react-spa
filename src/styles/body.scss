@@ -11,14 +11,13 @@ body {
   color: $actionItemColor;
   margin: 0 0 20px 0;
   text-transform: lowercase;
-}
 
-footer {
-  height: 70px;
-  display: flex;
-  justify-content: center;
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
 
-  .footer-container {
+  &__inner {
     flex: 0 1 80%;
     margin: 10px 0;
   }

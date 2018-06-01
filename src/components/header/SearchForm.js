@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import uniqueId from 'lodash/uniqueId';
 import SearchButton from './SearchButton';
+import FilterButtons from './FilterButtons';
 
 class SearchForm extends Component {
     render () {
@@ -14,9 +14,7 @@ class SearchForm extends Component {
         
                 <div className="search-panel__filter">
                     <label id="filterDescription">Search by:</label>
-                    {this.getFilterButtons()}
-                    {/* {this.getSearchButton()} */}
-                    <br />
+                    <FilterButtons searchBy={this.props.searchBy} setSearchCriterion={this.props.setSearchCriterion}/>
                     <SearchButton />
                 </div>
             </Fragment>
@@ -37,41 +35,10 @@ class SearchForm extends Component {
         );
     }
 
-    getSearchButton() {
-        return (
-            <button 
-                className="search-panel__button-search"
-                onClick={() => this.getTerm() }
-            >
-            Search
-            </button>
-        );
-    }
-
     getTerm() {
         let term = document.getElementById('searchPanelInput').value;
         this.props.setSearchTerm(term);
         this.props.updateResults(this.props.searchBy, term);
-    }
-
-    getFilterButtons() {
-        const searches = ['title', 'genres'];
-
-        return searches.map((el) => 
-            <button
-                key={uniqueId(el)}
-                className={
-                    `search-panel__button-filter 
-                    ${ el === this.props.searchBy ? 'search-panel__button-filter_active' : ''}`
-                }
-                onClick={() => {
-                    this.props.setSearchCriterion(el);
-                }}
-            >
-                {el}
-            </button>
-    
-        );
     }
 }
 
