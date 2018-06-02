@@ -1,5 +1,5 @@
 import React from 'react';
-import SortButton from '../../containers/SortButtonContainer';
+import SortButton from '../../containers/SortButtonContainer'; //todo: rename appropriately
 import PropTypes from 'prop-types';
 
 const SortPanel = ({ moviesFound }) => {

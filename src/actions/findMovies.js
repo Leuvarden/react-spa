@@ -2,8 +2,9 @@ import _filter from 'lodash/filter';
 import _includes from 'lodash/includes';
 import _isArray from 'lodash/isArray';
 
-const findMovies = (movies=[], searchFor='title', searchTerm) => {
-    if (searchTerm) {
+const findMovies = (movies=[], params) => {
+    if (params.query) {
+        const searchFor = params.searchBy;
 
         let founded = _filter(movies, (o) => {
 
@@ -15,7 +16,7 @@ const findMovies = (movies=[], searchFor='title', searchTerm) => {
                 target = o[searchFor].toString().toLowerCase();
             }
             
-            return _includes(target, searchTerm.trim().toLowerCase());
+            return _includes(target, params.query.trim().toLowerCase());
         });
 
         return [].concat(founded);

@@ -15,17 +15,21 @@ class ContentArea extends Component {
         );
     }
 
+    //todo: brokes when switching to ssr
     componentDidMount() {
         if (!this.props.location) {
             return;
         }
+        if (!this.props.activeMovie) {
+            return;
+        }
         const params = new URLSearchParams(this.props.location.search);
         
-        let searchBy = params.get('searchBy');
+        let searchBy = params.get('searchBy'); //todo if undefined (now is needed to find issues)
         let query = (params.get('query') === 'all') ? '' : params.get('query');
 
-        if (query && query.length && this.props.searchTerm.length > 0) {
-            this.props.updateResults(query, searchBy);
+        if (query && query.length) { //todo: check if probably conflicts with searchButton
+            this.props.setSearchParams({query, searchBy});
         }
     }
     
@@ -43,11 +47,6 @@ class ContentArea extends Component {
                     <ContentItem
                         key={uniqueId(el.id)}
                         movie={el}
-                        // id={el.id} 
-                        // genres={el.genres} 
-                        // img={el.poster_path}
-                        // date={el.release_date} 
-                        // title={el.title} 
                     />
                     
                 );
@@ -66,12 +65,10 @@ ContentArea.propTypes = {
         PropTypes.object
     ),
     activeMovie: PropTypes.object,
-    updateResults: PropTypes.func,
+    setSearchParams: PropTypes.func,
     location: PropTypes.object,
-    searchTerm: PropTypes.string
 };
 
 ContentArea.defaultProps = {
-    searchTerm: '',
     movies: []
 };

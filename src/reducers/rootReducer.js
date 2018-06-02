@@ -21,6 +21,26 @@ export const dataReducer = (state = [], action) => {
         return state;
     }
 };
+export const setMoviesToStore = (data) => {
+    return {
+        type: constants.SET_MOVIES_TO_STORE,
+        data: data
+    };
+};
+
+export const searchParams = (state = {searchBy: 'title', query: ''}, action) => {
+    switch (action.type) {
+    case 'SET_SEARCH_PARAMS':
+        return {
+            ...state,
+            query: action.query, 
+            searchBy: action.searchBy
+        };
+    default:
+        return state;
+    }
+};
+
 
 export const sortBy = (state = 'release_date', action) => {
     switch (action.type) {
@@ -53,8 +73,7 @@ let rootReducer = combineReducers({
     data: dataReducer,
     activeMovie,
     sortBy,
-    searchBy,
-    searchTerm
+    searchParams
 });
 
 export default rootReducer;

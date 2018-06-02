@@ -1,11 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { setSearchTerm } from '../../actions';
-import fetchMovies  from './../../thunks/FetchMovies';
+import { setSearchParams } from '../../actions';
 import PropTypes from 'prop-types';
 
-const SearchButton = ({ setSearchQuery, searchBy }) => {
+const SearchButton = ({ setSearchQuery, searchParams }) => {
     
     return (
         <button 
@@ -13,7 +12,9 @@ const SearchButton = ({ setSearchQuery, searchBy }) => {
             onClick={() => {
                 let term = document.getElementById('searchPanelInput');
                 let query = term ? term.value : 'all';
-                setSearchQuery(query, searchBy);
+                setSearchQuery({
+                    query, 
+                    searchBy: searchParams.searchBy});
             } }
         >
             Search
@@ -23,21 +24,21 @@ const SearchButton = ({ setSearchQuery, searchBy }) => {
 
 let mapStateToProps = (state) => {
     return {
-        searchQuery: state.searchTerm,
-        searchBy: state.searchBy
+        searchParams: state.searchParams,
     };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        setSearchQuery: (query, searchBy) => {
-            if (query.length) {
-                ownProps.history.push(`/?query=${query}&searchBy=${searchBy}`);
+        setSearchQuery: (params) => {
+
+            dispatch(setSearchParams(params));
+
+            if (params.query.length) {
+                ownProps.history.push(`/?query=${params.query}&searchBy=${params.searchBy}`);
             } else {
-                ownProps.history.push(`/?query=all&searchBy=${searchBy}`);
+                ownProps.history.push(`/?query=all&searchBy=${params.searchBy}`);
             }
-            dispatch(setSearchTerm(query));
-            dispatch(fetchMovies(searchBy, query));
         }
     };
 };
@@ -48,6 +49,6 @@ export default withRouter(
 );
 
 SearchButton.propTypes = {
-    searchBy: PropTypes.string,
+    searchParams: PropTypes.object,
     setSearchQuery: PropTypes.func,
 };

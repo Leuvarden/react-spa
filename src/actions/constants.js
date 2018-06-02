@@ -3,5 +3,8 @@ export const SET_MOVIES_TO_STORE = 'SET_MOVIES_TO_STORE';
 export const SET_SORTING = 'SET_SORTING';
 export const SET_SEARCH = 'SET_SEARCH';
 export const SEARCH_FOR = 'SEARCH_FOR';
+export const FETCH_MOVIES = 'FETCH_MOVIES';
+export const FETCH_MOVIES_BY_ID = 'FETCH_MOVIES_BY_ID';
+export const SET_SEARCH_PARAMS = 'SET_SEARCH_PARAMS';
 
 export const AvailableSearches = ['title', 'release_date', 'genre'];

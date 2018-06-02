@@ -2,15 +2,19 @@ import React from 'react';
 
 const searches = ['title', 'genres'];
 
-const FilterButtons = ({ searchBy, setSearchCriterion }) => {
+const FilterButtons = ({ searchParams, setSearchParams }) => {
     return searches.map((name) => 
         <button
             key={name}
             className={
                 `search-panel__button-filter 
-                ${ (name === searchBy) && 'search-panel__button-filter_active' }`
+                ${ (name === searchParams.searchBy) && 'search-panel__button-filter_active' }`
             }
-            onClick={() => setSearchCriterion(name)}
+            onClick={() => setSearchParams({
+                query: searchParams.query, 
+                searchBy: name
+            })
+            }
         >
             {name}
         </button>
