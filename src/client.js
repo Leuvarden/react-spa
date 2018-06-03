@@ -1,6 +1,5 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
-// import store from './store';
 import Routes from './Routes';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from './configureStore';

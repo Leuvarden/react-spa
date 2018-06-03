@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import * as constants from './../actions/constants';
 
-export let activeMovie = (state = null, action) => {
+export let activeMovie = (state = {}, action) => {
     switch (action.type) {
     case constants.MOVIE_SELECTED:
         return action.payload;

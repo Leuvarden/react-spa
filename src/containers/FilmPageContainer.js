@@ -1,16 +1,30 @@
 import { connect } from 'react-redux';
 import findMovies from './../actions/findMovies';
 import FilmPage from './../components/FilmPage';
+import {selectMovie} from './../actions';
+import { withRouter } from 'react-router';
 
 let mapStateToProps = (state, ownProps) => {
+    let activeMovie = state.activeMovie;
     let id = ownProps.match.params.id || '0';
-    let movie = findMovies(state.data.data, 'id', id)[0];
 
     return {
-        activeMovie: movie,
-        sameGenreMovies: findMovies(state.data.data, 'genres', movie.genres[0]) 
+        movieId: id,
+        activeMovie: activeMovie,
+        sameGenreMovies: activeMovie.genres ? findMovies(state.data.data, 'genres', activeMovie.genres[0]) : []
     };
 };
 
-export default connect(mapStateToProps)(FilmPage);
+let mapDispatchToProp = (dispatch) => {
+    return {
+        // getActiveMovie: (id) => {
+        //     dispatch({type: 'FETCH_MOVIES_BY_ID', id});
+        // }
+        setActiveMovie: (id) => {
+            dispatch({type: 'FETCH_MOVIES_BY_ID', id});
+        }
+    };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProp)(FilmPage));
 

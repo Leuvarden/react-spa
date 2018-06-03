@@ -8,7 +8,6 @@ export const selectMovie = (movie) => {
 };
 
 export const setSearchParams = (params) => {
-    console.log(params);
     return {
         type: constants.SET_SEARCH_PARAMS,
         query: params.query,

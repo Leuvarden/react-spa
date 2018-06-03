@@ -1,6 +1,6 @@
 import 'regenerator-runtime/runtime';
 import * as constants from './../actions/constants';
-import { put, takeEvery, all, call, select } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest, all, call, select } from 'redux-saga/effects';
 import findMovies from './../actions/findMovies';
 
 const url = 'http://react-cdp-api.herokuapp.com/movies';
@@ -19,17 +19,33 @@ export function* fetchMovies() {
     });
 }
 
-export function* watchFetchMovies() {
-    yield takeEvery(constants.FETCH_MOVIES, fetchMovies);
+export function* fetchMoviesById(action) {
+    const response = yield call(fetch, url + '/' + action.id);
+    const movie = yield response.json();
+
+    yield put({ 
+        type: constants.MOVIE_SELECTED,
+        payload: movie
+    });
 }
 
+export function* watchFetchMovies() {
+    yield takeLatest(constants.FETCH_MOVIES, fetchMovies);
+}
+
+export function* watchFetchMoviesById() {
+    yield takeEvery('FETCH_MOVIES_BY_ID', fetchMoviesById);
+}
+
+
 export function* watchIfSearchParamsUpdated() {
-    yield takeEvery(constants.SET_SEARCH_PARAMS, fetchMovies);
+    yield takeLatest(constants.SET_SEARCH_PARAMS, fetchMovies);
 }
 
 export default function* rootSaga() {
     yield all([ 
         watchFetchMovies(),
-        watchIfSearchParamsUpdated()
+        watchIfSearchParamsUpdated(),
+        // watchFetchMoviesById()
     ]);
 }

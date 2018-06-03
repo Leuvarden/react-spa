@@ -20,10 +20,10 @@ export class FilmPanel extends Component {
             <figcaption className="film-panel_description">
                 <h1>{this.props.movie.title}</h1>
                 <p className="film-panel_category">
-                    {this.props.movie.genres[0]}
+                    {this.props.movie.genres ? this.props.movie.genres[0] : ''}
                 </p>
                 <p className="film-panel_year">
-                    {this.props.movie.release_date.slice(0, 4)}
+                    {this.props.movie.release_date ? this.props.movie.release_date.slice(0, 4) : ''}
                 </p>
                 <p className="film-panel_overview">
                     {this.props.movie.overview}
@@ -41,11 +41,14 @@ export class FilmPanel extends Component {
     }
 
     getSameGenres() {
-        return (
-            <div className="film-panel__figure film-panel__sorting">
-                <span>Films by {this.props.movie.genres[0]} genre</span>
-            </div>
-        );
+        if (this.props.movie.genres) {
+            return (
+                <div className="film-panel__figure film-panel__sorting">
+                    <span>Films by {this.props.movie.genres[0]} genre</span>
+                </div>
+            );
+        }
+        return null;
     }
 }
 
@@ -58,4 +61,13 @@ FilmPanel.propTypes = {
     title: PropTypes.string,
     poster_path: PropTypes.string,
     release_date: PropTypes.string
+};
+
+FilmPanel.defaultProps = {
+    movie: {},
+    genres: [],
+    overview: '',
+    title: '',
+    poster_path: '',
+    release_date: ''
 };

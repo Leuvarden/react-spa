@@ -40,18 +40,26 @@ export default function serverRenderer() {
             />
         );
 
-        const htmlString = renderToString(root);
+        // debugger;
+        // console.log(store.);
 
-        if (context.url) {
-            res.writeHead(302, {
-                Location: context.url
-            });
-            res.end();
-            return;
-        }
+        store.runSaga().done.then(() => {
+            const htmlString = renderToString(root);
 
-        const preloaded = store.getState();
+            if (context.url) {
+                res.writeHead(302, {
+                    Location: context.url
+                });
+                res.end();
+                return;
+            }
 
-        res.send(renderHTML(htmlString, preloaded));
+            const preloaded = store.getState();
+
+            res.send(renderHTML(htmlString, preloaded));
+        });
+
+        renderToString(root);
+        store.close();
     };
 }

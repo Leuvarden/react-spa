@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
+    "start": "cross-env NODE_ENV=development node ./server",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack",
     "prod": "cross-env NODE_ENV=production node ./server",
     "test": "jest --watch --coverage"

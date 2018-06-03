@@ -32,6 +32,11 @@ class ContentArea extends Component {
             this.props.setSearchParams({query, searchBy});
         }
     }
+
+    //??????? fetch is not defuned at rootSaga?
+    // componentWillMount() {
+    //     this.props.setSearchParams({query: 'so', searchBy: 'title'});
+    // }
     
     getContent() {
         let activeMovie = this.props.activeMovie;
@@ -44,11 +49,7 @@ class ContentArea extends Component {
                 }
 
                 return (
-                    <ContentItem
-                        key={uniqueId(el.id)}
-                        movie={el}
-                    />
-                    
+                    <ContentItem key={uniqueId(el.id)} movie={el} />  
                 );
             }
             );
