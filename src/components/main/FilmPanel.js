@@ -5,8 +5,8 @@ import './../../styles/film-panel.scss';
 export class FilmPanel extends Component {
     render () {
         return this.props.movie && (
-            <section className="film-panel">
-                <figure>
+            <section className="film-panel__container">
+                <figure className="film-panel__figure">
                     {this.getPoster()}
                     {this.getCaption()}
                 </figure>

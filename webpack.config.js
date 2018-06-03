@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = function (env, options) {
 
@@ -11,7 +10,11 @@ module.exports = function (env, options) {
         entry: './src/index.js',
         output: {
             path: path.join(__dirname, '/dist'),
-            filename: 'index.bundle.js'
+            filename: 'index.bundle.js',
+            publicPath: '/'
+        },
+        devServer: {
+            historyApiFallback: true
         },
         devtool: isProduction ? 'none' : 'source-map',
         resolve: {
@@ -26,7 +29,6 @@ module.exports = function (env, options) {
                 },
                 {
                     test: /\.(s*)css$/,
-                    // use: ['style-loader', 'css-loader'] 
                     use: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
                         use: 'css-loader!sass-loader'
@@ -34,18 +36,11 @@ module.exports = function (env, options) {
                 }
             ]
         },
-        devServer: {
-            historyApiFallback: true
-        },
         plugins: [
             new HtmlWebpackPlugin({
                 template: './src/index.html'
             }),
-            new ExtractTextPlugin('[name].css'),
-            // new StyleLintPlugin({
-            //     configFile: '.stylelintrc',
-            //     failOnError: false
-            // })
+            new ExtractTextPlugin('[name].css')
         ]
     };
 
