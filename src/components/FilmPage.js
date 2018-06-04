@@ -17,7 +17,7 @@ class FilmPage extends Component {
     //todo: FilmPage doesn't rerender after navigation through links, location of render persists
     componentDidMount() {
         this.props.fetchMovieById(this.props.filmId);
-        this.props.getSameGenres(this.props.filmId, this.props.sortBy)
+        this.props.getSameGenres(this.props.filmId, this.props.sortBy);
     }
 }
 
@@ -25,5 +25,9 @@ export default FilmPage;
 
 FilmPage.propTypes = {
     activeMovie: PropTypes.object,
-    sameGenreMovies: PropTypes.array
+    sameGenreMovies: PropTypes.array,
+    getSameGenres: PropTypes.func,
+    fetchMovieById: PropTypes.func,
+    filmId: PropTypes.any,
+    sortBy: PropTypes.string
 };

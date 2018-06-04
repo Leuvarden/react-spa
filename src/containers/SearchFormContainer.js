@@ -1,28 +1,30 @@
 import { connect } from 'react-redux';
-import { setSearchBy, setSearchQuery } from '../actions';
-// import fetchMovies  from './../thunks/FetchMovies';
 import SearchForm from '../components/header/SearchForm';
+import { withRouter } from 'react-router';
+import { setSearchParams } from '../actions';
 
+let mapStateToProps = (state) => {
+    return {
+        searchParams: state.searchParams,
+        sortBy: state.sortBy
+    };
+};
 
-let mapStateToProps = (state) => ({
-    searchBy: state.searchBy,
-    searchTerm: state.searchTerm,
-    movies: state.data.data
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        setSearchParams: (params, sortBy) => {
+            
+            dispatch(setSearchParams(params, dispatch, sortBy));
 
-const mapDispatchToProps = (dispatch) => ({
-    setSearchCriterion: (prop) => {
-        dispatch(setSearchBy(prop));
-    },
-    setSearchTerm: (prop) => {
-        dispatch(setSearchQuery(prop));
-    },
-    // updateResults: (criterion, term) => {
-    //     dispatch(fetchMovies(criterion, term));
-    // },
-});
+            if (params.query.length) {
+                ownProps.history.push(`/?query=${params.query}&searchBy=${params.searchBy}`);
+            } else {
+                ownProps.history.push(`/?query=all&searchBy=${params.searchBy}`);
+            }
+        }
+    };
+};
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(SearchForm);
+export default withRouter(
+    connect(mapStateToProps, mapDispatchToProps)(SearchForm)
+);

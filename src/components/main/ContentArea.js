@@ -19,43 +19,33 @@ class ContentArea extends Component {
         if (!this.props.location) {
             return;
         }
+
         const params = new URLSearchParams(this.props.location.search);
         
         let searchBy = params.get('searchBy');
         let query = (params.get('query') === 'all') ? '' : params.get('query');
 
-        if (query && query.length && this.props.searchTerm.length > 0) {
-            this.props.updateResults(query, searchBy);
+        if (query && query.length) {
+            this.props.setSearchParams({query, searchBy});
         }
     }
     
     getContent() {
-        let activeMovie = this.props.activeMovie;
-
-        if (this.props.movies[0]) {
-
-            return this.props.movies.map((el) => {
-                if (activeMovie && el.title === activeMovie.title) {
-                    return null;
-                }
-
-                return (
-                    <ContentItem
-                        key={uniqueId(el.id)}
-                        movie={el}
-                        // id={el.id} 
-                        // genres={el.genres} 
-                        // img={el.poster_path}
-                        // date={el.release_date} 
-                        // title={el.title} 
-                    />
-                    
-                );
-            }
-            );
-        } else {
+        if (!this.props.movies[0]) {
             return <EmptyContent />;
         }
+
+        return this.props.movies.map((el) => {
+            if (this.props.activeMovie && el.title === this.props.activeMovie.title) {
+                return null;
+            }
+            return (
+                <ContentItem
+                    key={uniqueId(el.id)}
+                    movie={el}
+                />   
+            );
+        });
     }
 }
 
@@ -66,12 +56,10 @@ ContentArea.propTypes = {
         PropTypes.object
     ),
     activeMovie: PropTypes.object,
-    updateResults: PropTypes.func,
+    setSearchParams: PropTypes.func,
     location: PropTypes.object,
-    searchTerm: PropTypes.string
 };
 
 ContentArea.defaultProps = {
-    searchTerm: '',
     movies: []
 };

@@ -1,4 +1,5 @@
 import * as constants from './constants';
+import {fetchMoviesForSearch}  from './../thunks/FetchMovies';
 
 export const selectMovie = (movie) => {
     return {
@@ -26,14 +27,16 @@ export const setSorting = criterion => ({
     criterion
 });
 
-export const setSearchBy = searchBy => ({
-    type: constants.SET_SEARCH,
-    searchBy
-});
+export const setSearchParams = (params, dispatch, sortBy) => { //todo: what's wrong with order
 
-export const setSearchQuery = searchQuery => {
+    if (!dispatch) {
+        throw new Error('No dispatch were passed to setSearchParams');
+    }
+    dispatch(fetchMoviesForSearch (params.query, params.searchBy), sortBy);
+
     return {
-        type: constants.SEARCH_FOR,
-        searchQuery
+        type: constants.SET_SEARCH_PARAMS,
+        query: params.query,
+        searchBy: params.searchBy
     };
 };

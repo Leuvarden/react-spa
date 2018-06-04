@@ -1,11 +1,7 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
-import { setSearchQuery } from '../../actions';
-import { fetchMoviesForSearch }  from './../../thunks/FetchMovies';
 import PropTypes from 'prop-types';
 
-const SearchButton = ({ setSearchQuery, searchBy, sortBy }) => {
+const SearchButton = ({ setSearchParams, searchParams, sortBy }) => {
     
     return (
         <button 
@@ -13,7 +9,10 @@ const SearchButton = ({ setSearchQuery, searchBy, sortBy }) => {
             onClick={() => {
                 let term = document.getElementById('searchPanelInput');
                 let query = term ? term.value : 'all';
-                setSearchQuery(query,  searchBy, sortBy);
+                setSearchParams({
+                    query, 
+                    searchBy: searchParams.searchBy
+                }, sortBy);
             } }
         >
             Search
@@ -21,34 +20,10 @@ const SearchButton = ({ setSearchQuery, searchBy, sortBy }) => {
     );
 };
 
-let mapStateToProps = (state) => {
-    return {
-        searchBy: state.searchBy,
-        sortBy: state.sortBy
-    };
-};
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        setSearchQuery: (query, searchBy, sortBy) => {
-            if (query.length) {
-                ownProps.history.push(`/?query=${query}&searchBy=${searchBy}`);
-            } else {
-                ownProps.history.push(`/?query=all&searchBy=${searchBy}`);
-            }
-
-            dispatch(setSearchQuery(query));
-            dispatch(fetchMoviesForSearch(query, searchBy, sortBy));
-        }
-    };
-};
-
-
-export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(SearchButton)
-);
+export default SearchButton;
 
 SearchButton.propTypes = {
-    searchBy: PropTypes.string,
-    setSearchQuery: PropTypes.func,
+    searchParams: PropTypes.object,
+    setSearchParams: PropTypes.func,
+    sortBy: PropTypes.string
 };
