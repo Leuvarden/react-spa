@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { setSearchCriterion, setSearchTerm } from '../actions';
-import fetchMovies  from './../thunks/FetchMovies';
+import { setSearchBy, setSearchQuery } from '../actions';
+// import fetchMovies  from './../thunks/FetchMovies';
 import SearchForm from '../components/header/SearchForm';
 
 
@@ -12,14 +12,14 @@ let mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     setSearchCriterion: (prop) => {
-        dispatch(setSearchCriterion(prop));
+        dispatch(setSearchBy(prop));
     },
     setSearchTerm: (prop) => {
-        dispatch(setSearchTerm(prop));
+        dispatch(setSearchQuery(prop));
     },
-    updateResults: (criterion, term) => {
-        dispatch(fetchMovies(criterion, term));
-    },
+    // updateResults: (criterion, term) => {
+    //     dispatch(fetchMovies(criterion, term));
+    // },
 });
 
 export default connect(

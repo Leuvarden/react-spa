@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { setSearchTerm } from '../../actions';
-import fetchMovies  from './../../thunks/FetchMovies';
+import { setSearchQuery } from '../../actions';
+import { fetchMoviesForSearch }  from './../../thunks/FetchMovies';
 import PropTypes from 'prop-types';
 
-const SearchButton = ({ setSearchQuery, searchBy }) => {
+const SearchButton = ({ setSearchQuery, searchBy, sortBy }) => {
     
     return (
         <button 
@@ -13,7 +13,7 @@ const SearchButton = ({ setSearchQuery, searchBy }) => {
             onClick={() => {
                 let term = document.getElementById('searchPanelInput');
                 let query = term ? term.value : 'all';
-                setSearchQuery(query, searchBy);
+                setSearchQuery(query,  searchBy, sortBy);
             } }
         >
             Search
@@ -23,21 +23,22 @@ const SearchButton = ({ setSearchQuery, searchBy }) => {
 
 let mapStateToProps = (state) => {
     return {
-        searchQuery: state.searchTerm,
-        searchBy: state.searchBy
+        searchBy: state.searchBy,
+        sortBy: state.sortBy
     };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        setSearchQuery: (query, searchBy) => {
+        setSearchQuery: (query, searchBy, sortBy) => {
             if (query.length) {
                 ownProps.history.push(`/?query=${query}&searchBy=${searchBy}`);
             } else {
                 ownProps.history.push(`/?query=all&searchBy=${searchBy}`);
             }
-            dispatch(setSearchTerm(query));
-            dispatch(fetchMovies(searchBy, query));
+
+            dispatch(setSearchQuery(query));
+            dispatch(fetchMoviesForSearch(query, searchBy, sortBy));
         }
     };
 };

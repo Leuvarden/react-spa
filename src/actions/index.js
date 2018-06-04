@@ -1,5 +1,4 @@
 import * as constants from './constants';
-import findMovies from './findMovies';
 
 export const selectMovie = (movie) => {
     return {
@@ -8,10 +7,17 @@ export const selectMovie = (movie) => {
     };
 };
 
-export const setMoviesToStore = (data, criterion, term) => {
+export const setSameGenresMovies = (movies) => {
+    return {
+        type: constants.SET_SAME_GENRES_MOVIES,
+        movies
+    };
+};
+
+export const setMoviesToStore = (data) => {
     return {
         type: constants.SET_MOVIES_TO_STORE,
-        data: findMovies(data, criterion, term)
+        data
     };
 };
 
@@ -20,15 +26,14 @@ export const setSorting = criterion => ({
     criterion
 });
 
-export const setSearchCriterion = criterion => ({
+export const setSearchBy = searchBy => ({
     type: constants.SET_SEARCH,
-    criterion
+    searchBy
 });
 
-export const setSearchTerm = term => {
-    // console.log(term);
+export const setSearchQuery = searchQuery => {
     return {
         type: constants.SEARCH_FOR,
-        term
+        searchQuery
     };
 };

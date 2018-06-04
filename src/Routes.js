@@ -11,8 +11,8 @@ import ContentAreaContainer from './containers/ContentAreaContainer';
 const Routes = ({ Router, location, context, store }) => (
     <Provider store={store}>
         <Router location={location} context={context}>
-            <Switch>
-                <App>
+            <App>
+                <Switch>
                     <Route exact path="/" component={(args) => <MainPage {...args} />} />
   
                     <Route path="/films">
@@ -21,10 +21,10 @@ const Routes = ({ Router, location, context, store }) => (
                             <Route path="/films/:id" component={FilmPageContainer} />
                         </Switch>
                     </Route>
-                </App>
 
-                <Route path="*" component={NotFound} />
-            </Switch>
+                    <Route path="*" component={NotFound} />
+                </Switch>
+            </App>
         </Router>
     </Provider>
 );

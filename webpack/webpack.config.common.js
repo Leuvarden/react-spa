@@ -8,8 +8,9 @@ module.exports = {
     mode: process.env.NODE_ENV,
 
     output: {
+        path: path.resolve('./public'),
         filename: 'js/[name].js',
-        path: path.resolve('./public')
+        publicPath: '/'
     },
 
     devtool: isDev ? 'source-map' : 'none',

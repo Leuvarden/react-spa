@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import * as constants from './../actions/constants';
 
-export let activeMovie = (state = null, action) => {
+export let activeMovie = (state = {}, action) => {
     switch (action.type) {
     case constants.MOVIE_SELECTED:
         return action.payload;
@@ -34,16 +34,25 @@ export const sortBy = (state = 'release_date', action) => {
 export const searchBy = (state = 'title', action) => {
     switch (action.type) {
     case constants.SET_SEARCH:
-        return action.criterion;
+        return action.searchBy;
     default:
         return state;
     }
 };
 
-export const searchTerm = (state='', action) => {
+export const searchQuery = (state='', action) => {
     switch (action.type) {
     case constants.SEARCH_FOR:
-        return action.term;
+        return action.searchQuery;
+    default:
+        return state;
+    }
+};
+
+export const sameGenreMovies = (state = [], action) => {
+    switch (action.type) {
+    case constants.SET_SAME_GENRES_MOVIES:
+        return action.movies;
     default:
         return state;
     }
@@ -54,7 +63,8 @@ let rootReducer = combineReducers({
     activeMovie,
     sortBy,
     searchBy,
-    searchTerm
+    searchQuery,
+    sameGenreMovies
 });
 
 export default rootReducer;

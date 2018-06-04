@@ -1,8 +1,8 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Routes from './Routes';
+import Routes from './../src/Routes';
 import { StaticRouter } from 'react-router-dom';
-import configureStore from './configureStore';
+import configureStore from './../src/configureStore';
 
 function renderHTML(html, preloaded) {
     return `

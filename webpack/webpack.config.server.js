@@ -5,7 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 module.exports = merge(common, {
     name: 'server',
     target: 'node',
-    entry: './src/serverRenderer.js',
+    entry: './server/serverRenderer.js',
     externals: [nodeExternals()],
     output: {
         filename: 'js/serverRenderer.js',

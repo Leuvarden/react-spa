@@ -1,16 +1,34 @@
 import { connect } from 'react-redux';
-import findMovies from './../actions/findMovies';
 import FilmPage from './../components/FilmPage';
+import { withRouter } from 'react-router';
+import { fetchMovieById, fetchSameGenres} from './../thunks/FetchMovies';
 
 let mapStateToProps = (state, ownProps) => {
     let id = ownProps.match.params.id || '0';
-    let movie = findMovies(state.data.data, 'id', id)[0];
 
     return {
-        activeMovie: movie,
-        sameGenreMovies: findMovies(state.data.data, 'genres', movie.genres[0]) 
+        filmId: id,
+        sortBy: state.sortBy,
+        activeMovie: state.activeMovie,
+        sameGenreMovies: state.sameGenreMovies
     };
 };
 
-export default connect(mapStateToProps)(FilmPage);
+let mapDispatchToProps = (dispatch) => {
+    return {
+        fetchMovieById: (id) => {
+            dispatch(fetchMovieById(id));
+        },
+        getSameGenres: (id, sortBy) => {
+            dispatch(fetchSameGenres(id, sortBy));
+        }
+    };
+
+};
+
+export default withRouter(
+    connect(
+        mapStateToProps, 
+        mapDispatchToProps
+    )(FilmPage));
 
